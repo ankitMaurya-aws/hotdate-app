@@ -1,0 +1,6 @@
+.db_header_nav li{
+    @apply text-lg font-medium uppercase
+}
+.db_header_nav .link{
+    @apply text-orange font-bold
+}

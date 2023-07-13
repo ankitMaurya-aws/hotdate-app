@@ -8,8 +8,8 @@ const ImageWithText3 = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     <div className="left-block flex justify-center lg:justify-end items-center">
                         <div className="inner-block max-w-500">
-                            <p className="text-xl md:text-xl xl:text-35px leading-45 font-light">Meet Members on</p>
-                            <h2 className="text-2xl md:text-4xl xl:text-50px leading-75 font-bold">Nude Cam Chat</h2>
+                            <p className="text-xl md:text-xl xl:text-35px sm:leading-45 font-light">Meet Members on</p>
+                            <h2 className="text-2xl md:text-4xl xl:text-50px sm:leading-75 sm:mb-0 mb-3 font-bold">Nude Cam Chat</h2>
                             <p className="text-sm md:text-base xl:text-lg mb-4 leading-29">Wanna chat online? Join
                                 Kaizenglobe.com
                                 now and enjoy adult chat with horny
@@ -21,8 +21,8 @@ const ImageWithText3 = () => {
                         </div>
                     </div>
                     <div className="right-block flex justify-center items-center">
-                        <div className="right-block">
-                            <img src="landingPage/images/young-happy-smiling-beautiful-woman-lying-bed-speaking-phone-1.png" className="max-w-full" alt="partner" />
+                        <div className="right-block w-full lg:w-auto">
+                            <img src="landingPage/images/young-happy-smiling-beautiful-woman-lying-bed-speaking-phone-1.png" className="max-w-full w-full lg:w-auto" alt="partner" />
                         </div>
                     </div>
                 </div>

@@ -13,10 +13,13 @@ module.exports = {
         'gray-900': '#424242',
         'red-500': '#FF0900',
         'black-20': '#202020',
+        'dark-black': '#131313',
         'yellow': '#FFB800',
         'violet': '#4F41A2',
         'transparent-black': '#0000008f',
         '2e2e2e': '#2e2e2e',
+        'light-grey':'#2A2D37',
+        'dark-grey':"#858585"
       },
       minHeight: {
         '832': '832px',
@@ -35,6 +38,7 @@ module.exports = {
       maxWidth: {
         '100px': '100px',
         '150px': '150px',
+        '200px': '200px',
         '420px': '420px',
         '470px': '470px',
         '500': '500px',
@@ -95,6 +99,7 @@ module.exports = {
         '5xl': ['48px', {
           lineHeight: '65px',
         }],
+        '22px':"22px"
       },
       fontFamily: {
         'primary_font': ['Poppins', 'sans-serif'],

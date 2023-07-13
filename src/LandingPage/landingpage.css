@@ -32,3 +32,29 @@
     background-repeat: no-repeat;
     background-color: #000;
 }
+
+@media ( max-width: 1023px ){
+    .lp_navbar{
+        transition: all 0.3s;
+        @apply top-0 left-0 bg-black/60 min-h-screen w-full transform -translate-x-full z-[999] fixed
+    }
+    .lp_navbar_open{
+        @apply translate-x-0
+    }
+    .lp_navbar nav {
+        @apply m-0 w-[95%] bg-white min-h-screen max-w-sm pt-7 text-black
+    }
+    .lp_navbar ul li{
+        @apply mb-3
+    }
+    .hero_section{
+        background-size: cover;
+        background-position: center;
+    }
+}
+@media ( max-width: 767px ){
+    .adult-community-image{
+        background-size: 100%;
+        background-position: 0% bottom;
+    }
+}
