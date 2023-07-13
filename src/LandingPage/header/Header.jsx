@@ -33,7 +33,7 @@ const Header = () => {
                                     <Link to='/home'>Homepage</Link>
                                 </li>
                                 <li className='uppercase px-5'>
-                                    <Link>login</Link>
+                                    <Link to="/login">login</Link>
                                 </li>
                                 <li className='uppercase px-5'>
                                     <Link>Live chat</Link>
