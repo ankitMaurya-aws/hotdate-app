@@ -30,7 +30,7 @@ const Header = () => {
                             </div>
                             <ul className='lg:w-[calc(100%-150px)] max-w-full block lg:flex justify-center items-center'>
                                 <li className='uppercase px-5'>
-                                    <Link>Homepage</Link>
+                                    <Link to='/home'>Homepage</Link>
                                 </li>
                                 <li className='uppercase px-5'>
                                     <Link>login</Link>

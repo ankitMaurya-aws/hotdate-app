@@ -6,15 +6,15 @@ const Footer = () => {
         <footer className="bg-white text-black">
             <div className="container mx-auto">
                 <div
-                    className="flex flex-wrap justify-center md:justify-start items-center gap-4 md:gap-6 lg:gap-12 xl:gap-40 py-8 text-sm border-b-2 border-gray-900">
+                    className="flex flex-wrap md:w-[calc(70%-16px)] justify-center md:justify-between items-center gap-4 py-8 text-sm">
                     <Link>Find Adult Singles & Swingers</Link>
                     <Link>Sex Dating</Link>
                     <Link>View Members</Link>
                     <Link>Online Dating</Link>
                     <Link>Free Sex & Dates</Link>
                 </div>
-                <div className="footer-bottom flex flex-col lg:flex-row w-full py-8 gap-6 text-center md:text-start">
-                    <div className="footer-content w-full md:w-4/5">
+                <div className="footer-bottom flex flex-col lg:flex-row w-full py-8 gap-6 text-center md:text-start border-t-2 border-gray-900 justify-between">
+                    <div className="footer-content w-full md:w-[70%]">
                         <p className="text-sm">Persons appearing in photographs and videos may not be actual members. Other data
                             for
                             illustrative
