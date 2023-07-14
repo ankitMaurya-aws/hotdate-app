@@ -145,26 +145,32 @@ const Login = () => {
                   className="flex flex-col justify-center gap-y-4 sm:gap-y-6"
                   autocomplete="off"
                 >
-                  <div className="flex flex-wrap rounded-md input_field">
-                    <label
-                      htmlFor="username"
-                      className="rounded-l-md sm:w-[100px] xl:w-[195px] mb-1 sm:mb-0 sm:h-[49px] flex items-center justify-center lg:justify-start ps-0 lg:ps-4 text-sm xl:text-lg text-white  font-normal leading-5 xl:leading-29 text-center lg:text-start"
-                    >
-                      Login
-                    </label>
-                    <input
-                      name="email"
-                      value={login.email}
-                      onChange={(e) => handleChange(e)}
-                      type="text"
-                      id="username"
-                      autocomplete="off"
-                      className="bg-black border rounded-md sm:border-none sm:border-l-2 border-orange focus:outline-none focus-visible:none w-full sm:w-[calc(100%-100px)] xl:w-[calc(100%-195px)] h-[49px] border-gradient3 text-gray font-normal xl:text-lg sm:rounded-none sm:rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
-                      placeholder="Email or Phone Number"
-                      required
-                    />
+                  <div>
+                    <div className="flex flex-wrap rounded-md input_field">
+                      <label
+                        htmlFor="username"
+                        className="rounded-l-md sm:w-[100px] xl:w-[195px] mb-1 sm:mb-0 sm:h-[49px] flex items-center justify-center lg:justify-start ps-0 lg:ps-4 text-sm xl:text-lg text-white  font-normal leading-5 xl:leading-29 text-center lg:text-start"
+                      >
+                        Login
+                      </label>
+                      <input
+                        name="email"
+                        value={login.email}
+                        onChange={(e) => handleChange(e)}
+                        type="text"
+                        id="username"
+                        autocomplete="off"
+                        className="bg-black border rounded-md sm:border-none sm:border-l-2 border-orange focus:outline-none focus-visible:none w-full sm:w-[calc(100%-100px)] xl:w-[calc(100%-195px)] h-[49px] border-gradient3 text-gray font-normal xl:text-lg sm:rounded-none sm:rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
+                        placeholder="Email or Phone Number"
+                        required
+                      />
+                    </div>
+                    {loginErrors.email && (
+                      <p className="w-full capitalize text-xs p-1">
+                        {loginErrors.email}
+                      </p>
+                    )}
                   </div>
-                  <p>{loginErrors.email}</p>
                   <div className="flex flex-wrap rounded-md input_field">
                     <label
                       htmlFor="password"

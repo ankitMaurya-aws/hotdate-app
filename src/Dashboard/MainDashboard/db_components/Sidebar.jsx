@@ -3,18 +3,17 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div className="sidebar w-60">
+    <div className="sidebar xl:w-60">
       <div>
         <img
           src="images/sidebar_user_img.png"
-          className="block aspect-square object-cover"
-          alt=""
+          className="hidden aspect-square object-cover xl:block"
         />
-        <div className="py-8 border-b border-dark-grey">
+        <div className="pt-0 pb-8 xl:py-8 border-b border-dark-grey">
           <h3 className="font-semibold text-22px mb-3">Horny Chantline</h3>
           <p className="flex items-center justify-between gap-4 mb-3">
             Russia
-            <span className="cursor-pointer">
+            <Link className="cursor-pointer">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"
@@ -47,11 +46,11 @@ const Sidebar = () => {
                   fill="white"
                 />
               </svg>
-            </span>
+            </Link>
           </p>
           <p className="flex items-center justify-between gap-4">
             Edit Profile
-            <span className="cursor-pointer">
+            <Link className="cursor-pointer">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"
@@ -87,14 +86,14 @@ const Sidebar = () => {
                   />
                 </g>
               </svg>
-            </span>
+            </Link>
           </p>
         </div>
         <ul className="pt-8">
           <li className="mb-3">
             <Link className="inline-flex items-center gap-3">
               <span className="block w-6">
-                <img src="images/msg-icon.png" alt="" />
+                <img src="images/msg-icon.png" />
               </span>
               Messenger
             </Link>
@@ -102,7 +101,7 @@ const Sidebar = () => {
           <li className="mb-3">
             <Link className="inline-flex items-center gap-3">
               <span className="block w-6">
-                <img src="images/event-icon.png" alt="" />
+                <img src="images/event-icon.png" />
               </span>
               Events
             </Link>
@@ -110,7 +109,7 @@ const Sidebar = () => {
           <li className="mb-3">
             <Link className="inline-flex items-center gap-3">
               <span className="block w-6">
-                <img src="images/club-icon.png" alt="" />
+                <img src="images/club-icon.png" />
               </span>
               Clubs
             </Link>
@@ -118,7 +117,7 @@ const Sidebar = () => {
           <li className="mb-3">
             <Link className="inline-flex items-center gap-3">
               <span className="block w-6">
-                <img src="images/travel-icon.png" alt="" />
+                <img src="images/travel-icon.png" />
               </span>
               Travel Calender
             </Link>
@@ -126,7 +125,7 @@ const Sidebar = () => {
           <li className="mb-3">
             <Link className="inline-flex items-center gap-3">
               <span className="block w-6">
-                <img src="images/member.png" alt="" />
+                <img src="images/member.png" />
               </span>
               Members
             </Link>
@@ -134,7 +133,7 @@ const Sidebar = () => {
           <li className="mb-3">
             <Link className="inline-flex items-center gap-3">
               <span className="block w-6">
-                <img src="images/model-icon.png" alt="" />
+                <img src="images/model-icon.png" />
               </span>
               Models
             </Link>
@@ -142,7 +141,7 @@ const Sidebar = () => {
           <li className="mb-3">
             <Link className="inline-flex items-center gap-3">
               <span className="block w-6">
-                <img src="images/logout-icon.png" alt="" />
+                <img src="images/logout-icon.png" />
               </span>
               Logout
             </Link>
