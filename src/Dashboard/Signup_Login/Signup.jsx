@@ -140,51 +140,60 @@ const Signup = () => {
                                 <h2 className="text-white text-2xl sm:text-3xl xl:text-5xl text-center xl:text-start font-bold mb-6">Find Your Date</h2>
 
                                 <form className="flex flex-col justify-center gap-y-4 sm:gap-y-6"autocomplete="off">
+                                    <div>
                                     <div className="flex flex-wrap rounded-md input_field">
-                                        <label htmlFor="email" className="rounded-l-md w-full md:w-[120px] xl:w-[195px] sm:h-[49px] flex items-center justify-start sm:px-2 lg:px-4 text-sm mb-1 sm:mb-0 md:text-text-xs xl:text-lg text-white  font-normal leading-5 xl:leading-29 text-center 
+                                        <label htmlFor="email" className="rounded-l-md w-full md:w-[120px] xl:w-[195px] sm:h-[49px] flex items-center justify-start sm:px-2 lg:px-4 text-sm mb-1 sm:mb-0 md:text-text-xs xl:text-base text-white  font-normal leading-5 xl:leading-29 text-center 
                                             lg:text-start">
                                             Email address</label>
                                         <input type="email" id="email" name="email"  value={form.email}
                       onChange={(e) => handleChange(e)} autocomplete="off"
-                                            className="bg-black border rounded-md sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
+                                            className="bg-black border rounded-md sm:rounded-none sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
                                             placeholder="name@flowbite.com" required />
                                     </div>
-                                      <p>{formErrors.email}</p>
+                                  {formErrors.email && (<p className="w-full capitalize text-xs p-1">{formErrors.email}</p>)}
+                                    </div>
+                                    <div>
                                     <div className="flex flex-wrap rounded-md input_field">
                                         <label htmlFor="username"
-                                            className="rounded-l-md w-full md:w-[120px] xl:w-[195px] sm:h-[49px] flex items-center justify-start sm:px-2 lg:px-4 text-sm mb-1 sm:mb-0 md:text-text-xs xl:text-lg text-white  font-normal leading-5 xl:leading-29 text-center 
+                                            className="rounded-l-md w-full md:w-[120px] xl:w-[195px] sm:h-[49px] flex items-center justify-start sm:px-2 lg:px-4 text-sm mb-1 sm:mb-0 md:text-text-xs xl:text-base text-white  font-normal leading-5 xl:leading-29 text-center 
                                             lg:text-start">Username</label>
                                         <input type="text" id="username" name="username"  value={form.username}
                       onChange={(e) => handleChange(e)} autocomplete="off"
-                                            className="bg-black border rounded-md sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
+                                            className="bg-black border rounded-md sm:rounded-none sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
                                             placeholder="name@flowbite.com" required />
                                     </div>
-                                        <p>{formErrors.username}</p>
+                                    {formErrors.username && (<p className="w-full capitalize text-xs p-1">{formErrors.username}</p>)}
+                                    </div>
+                                    <div>
                                     <div className="flex flex-wrap rounded-md input_field">
                                         <label htmlFor="password" 
-                                            className="rounded-l-md w-full md:w-[120px] xl:w-[195px] sm:h-[49px] flex items-center justify-start sm:px-2 lg:px-4 text-sm mb-1 sm:mb-0 md:text-text-xs xl:text-lg text-white  font-normal leading-5 xl:leading-29 text-center 
+                                            className="rounded-l-md w-full md:w-[120px] xl:w-[195px] sm:h-[49px] flex items-center justify-start sm:px-2 lg:px-4 text-sm mb-1 sm:mb-0 md:text-text-xs xl:text-base text-white  font-normal leading-5 xl:leading-29 text-center 
                                             lg:text-start">Create
                                             Password</label>
                                         <input type="password" id="password" name="password" value={form.password}
                       onChange={(e) => handleChange(e)} autocomplete="off"
-                                            className="bg-black border rounded-md sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
+                                            className="bg-black border rounded-md sm:rounded-none sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
                                             required />
                                     </div>
-                                       <p>{formErrors.password}</p>
+                                    {formErrors.password && (<p className="w-full capitalize text-xs p-1">{formErrors.password}</p>)}
+                                    </div>
+                                    <div>
                                     <div className="flex flex-wrap rounded-md input_field">
                                         <label htmlFor="ConfirmPassword"
-                                            className="rounded-l-md w-full md:w-[120px] xl:w-[195px] sm:h-[49px] flex items-center justify-start sm:px-2 lg:px-4 text-sm mb-1 sm:mb-0 md:text-text-xs xl:text-lg text-white  font-normal leading-5 xl:leading-29 text-center 
+                                            className="rounded-l-md w-full md:w-[120px] xl:w-[195px] sm:h-[49px] flex items-center justify-start sm:px-2 lg:px-4 text-sm mb-1 sm:mb-0 md:text-text-xs xl:text-base text-white  font-normal leading-5 xl:leading-29 text-center 
                                             lg:text-start">Confirm
                                             Password</label>
                                         <input type="password" id="ConfirmPassword" name="confirmPassword" value={form.confirmPassword}
                       onChange={(e) => handleChange(e)}
-                                            className="bg-black border rounded-md sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
+                                            className="bg-black border rounded-md sm:rounded-none sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
                                             required />
                                     </div>
-                                    <p>{formErrors.confirmpassword}</p>
+                                    {formErrors.confirmpassword && (<p className="w-full capitalize text-xs p-1">{formErrors.confirmpassword}</p>)}
+                                    </div>
+                                    
                                     <div className="flex flex-col gap-30">
                                         <label htmlFor="intro_msg"
-                                            className="gradient w-full h-[49px] flex items-center justify-center text-lg text-white  font-normal leading-29 rounded-md mb-6">Introduction</label>
+                                            className="gradient w-full h-[49px] flex items-center justify-center xl:text-base text-white  font-normal leading-29 rounded-md mb-6">Introduction</label>
                                         <div className='p-[2px] gradient rounded-md'>
                                             <textarea type="text" id="intro_msg"
                                                 rows={3}
@@ -195,16 +204,16 @@ const Signup = () => {
                                                 required>
                                             </textarea>
                                         </div>
+                                        {formErrors.introduction && (<p className="w-full capitalize text-xs p-1">{formErrors.introduction}</p>)}
                                     </div>
-                                     <p>{formErrors.introduction}</p>
-                                    <div className="flex items-center">
+                                    <div className="flex items-center recaptcha_field">
                                     
                                           <ReCAPTCHA
-                      sitekey={Captcha_Key}
-                      onChange={onChangeCaptcha}
-                    />
-                                        <label for="remember" className="ml-2 text-sm md:text-lg font-normal text-gray">You are
-                                            Human</label>
+                                            sitekey={Captcha_Key}
+                                            onChange={onChangeCaptcha}
+                                          />
+                                        {/* <label for="remember" className="ml-2 text-sm md:text-lg font-normal text-gray">You are
+                                            Human</label> */}
                                     </div>
                                     <button className="gradient !py-3 w-full !text-lg xl:!text-25px capitalize !font-bold flex justify-center items-center text-white rounded-xl primary_btn" onClick={(e) => handleSignup(e)}>Join Now!</button>
                                     <div className="or-block flex justify-center items-center gap-6">
@@ -213,14 +222,16 @@ const Signup = () => {
                                         <div className="line-1 w-full h-[1px] bg-white"></div>
                                     </div>
                                 
+                                      <div className="google_login_btn">
                                       <GoogleLogin
-                    onSuccess={(credentialResponse) => {
-                      googleSignIn(credentialResponse);
-                    }}
-                    onError={() => {
-                      console.log("Login Failed");
-                    }}
-                  />
+                                        onSuccess={(credentialResponse) => {
+                                          googleSignIn(credentialResponse);
+                                        }}
+                                        onError={() => {
+                                          console.log("Login Failed");
+                                        }}
+                                      />
+                                      </div>
                                 </form>
                             </div>
                             <div className="sign-up__image relative rounded-b-3xl md:rounded-r-58">
