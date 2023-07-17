@@ -89,14 +89,14 @@ const Login = () => {
                             className="sign-up__body grid grid-cols-1 md:grid-cols-2 rounded-3xl md:rounded-t-58 md:rounded-r-58 bg-black mt-[-50px] md:rounded-58 relative  border-b-2 border-t-[1px] border-orange">
                             <div className="sign-up__form flex flex-col justify-center gap-30 py-6 px-6 lg:py-11 lg:px-14">
                                 <h2 className="text-white text-2xl sm:text-3xl xl:text-5xl text-start font-bold mb-6">Nice to see you again</h2>
-                                <form className="flex flex-col justify-center gap-y-4 sm:gap-y-6"autocomplete="off">
+                                <form className="flex flex-col justify-center gap-y-4 sm:gap-y-6"autoComplete="off">
                                     <div>
                                     <div className="flex flex-wrap rounded-md input_field">
                                         <label htmlFor="username"
                                             className="rounded-l-md sm:w-[100px] xl:w-[195px] mb-1 sm:mb-0 sm:h-[49px] flex items-center justify-center lg:justify-start ps-0 lg:ps-4 text-sm xl:text-lg text-white  font-normal leading-5 xl:leading-29 text-center lg:text-start">Login</label>
                                         <input   name="email"
                       value={login.email}
-                      onChange={(e) => handleChange(e)} type="text" id="username" autocomplete="off"
+                      onChange={(e) => handleChange(e)} type="text" id="username" autoComplete="off"
                                             className="bg-black border rounded-md sm:border-none sm:border-l-2 border-orange focus:outline-none focus-visible:none w-full sm:w-[calc(100%-100px)] xl:w-[calc(100%-195px)] h-[49px] border-gradient3 text-gray font-normal xl:text-lg sm:rounded-none sm:rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
                                             placeholder="Email or Phone Number" required />
                                     </div>
@@ -107,7 +107,7 @@ const Login = () => {
                                             className="rounded-l-md sm:w-[100px] xl:w-[195px] mb-1 sm:mb-0 sm:h-[49px] flex items-center justify-center lg:justify-start ps-0 lg:ps-4 text-sm xl:text-lg text-white  font-normal leading-5 xl:leading-29 text-center lg:text-start">Password</label>
                                         <input type="password"    name="password"
                       value={login.password}
-                      onChange={(e) => handleChange(e)} id="password" autocomplete="off"
+                      onChange={(e) => handleChange(e)} id="password" autoComplete="off"
                                         placeholder='Enter Password'
                                             className="bg-black border rounded-md sm:border-none sm:border-l-2 border-orange focus:outline-none focus-visible:none w-full sm:w-[calc(100%-100px)] xl:w-[calc(100%-195px)] h-[49px] border-gradient3 text-gray font-normal xl:text-lg sm:rounded-none sm:rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
                                             required />

@@ -61,22 +61,22 @@ const HomePage = () => {
                 </div>
                 <div className='grid grid-cols-2 sm:grid-cols-3 gap-6'>
                     <div className='cursor-pointer rounded-2xl'>
-                        <img src="images/model-img.png" alt="model" className='rounded-2xl aspect-square object-cover' />
+                        <img src="images/model-img.png" alt="model" className='rounded-2xl aspect-square object-cover w-full' />
                     </div>
                     <div className='cursor-pointer rounded-2xl'>
-                        <img src="images/model-img.png" alt="model" className='rounded-2xl aspect-square object-cover' />
+                        <img src="images/model-img.png" alt="model" className='rounded-2xl aspect-square object-cover w-full' />
                     </div>
                     <div className='cursor-pointer rounded-2xl'>
-                        <img src="images/model-img.png" alt="model" className='rounded-2xl aspect-square object-cover' />
+                        <img src="images/model-img.png" alt="model" className='rounded-2xl aspect-square object-cover w-full' />
                     </div>
                     <div className='cursor-pointer rounded-2xl'>
-                        <img src="images/model-img.png" alt="model" className='rounded-2xl aspect-square object-cover' />
+                        <img src="images/model-img.png" alt="model" className='rounded-2xl aspect-square object-cover w-full' />
                     </div>
                     <div className='cursor-pointer rounded-2xl'>
-                        <img src="images/model-img.png" alt="model" className='rounded-2xl aspect-square object-cover' />
+                        <img src="images/model-img.png" alt="model" className='rounded-2xl aspect-square object-cover w-full' />
                     </div>
                     <div className='cursor-pointer rounded-2xl'>
-                        <img src="images/model-img.png" alt="model" className='rounded-2xl aspect-square object-cover' />
+                        <img src="images/model-img.png" alt="model" className='rounded-2xl aspect-square object-cover w-full' />
                     </div>
                 </div>
             </div>

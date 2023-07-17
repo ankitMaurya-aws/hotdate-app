@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import DbHeader from './MainDashboard/header/DbHeader'
 import Footer from './Signup_Login/Footer'
 import { Outlet } from 'react-router-dom'
@@ -7,26 +7,40 @@ import './MainDashboard/db_components/sidebar.css'
 import ModelSidebarList from './MainDashboard/db_components/ModelSidebarList'
 
 const Layout = () => {
+    const [layout, setLayout] = useState('layout-1')
+    const baseUrl = window.location.origin;
+    const pageUrl = window.location.pathname;
+    const relativePath = pageUrl.replace(baseUrl, '');
+    useEffect(()=>{
+        if(relativePath === '/create_club' || relativePath === '/model_form' || relativePath === '/create_event' || relativePath === '/home'){
+            setLayout('layout-1')
+        }
+        else if(relativePath === '/event-page' || relativePath === '/club-page' || relativePath === '/travel-page' || relativePath === '/agency-travel-page' || relativePath === '/members-page'){
+            setLayout('layout-2')
+        }
+    },[relativePath])
     return (
         <div className='main_dashboard_wrapper bg-black-20 text-white grid content-between min-h-screen'>
             <div>
                 <DbHeader />
                 <div className='dashboard_body flex flex-wrap items-stretch min-h-screen mt-5'>
                     <div className='sidebar_wrapper w-1/5 hidden xl:block'>
-                        <div className='bg-dark-black rounded-r-2xl p-6 py-8 w-full flex justify-end'>
+                        <div className='bg-dark-black rounded-r-2xl p-6 py-8 w-full flex justify-end sticky top-0'>
                             <Sidebar />
                         </div>
                     </div>
-                    <div className='w-full xl:w-3/5 sm:px-5'>
-                        <div className=' h-full'>
+                    <div className={`${layout === 'layout-1' ? 'w-full xl:w-3/5 sm:px-5' : 'w-full xl:w-4/5 sm:px-5 sm:pr-0'}`}>
+                        <div className='sticky top-0 h-full'>
                             <Outlet />
                         </div>
                     </div>
-                    <div className='w-full xl:w-1/5'>
-                        <div className='bg-dark-black rounded-l-2xl p-6 py-8 w-full flex justify-start'>
+                    {layout === 'layout-1' &&
+                    (<div className='w-full xl:w-1/5'>
+                        <div className='sticky top-0 bg-dark-black rounded-l-2xl p-6 py-8 w-full flex justify-start'>
                             <ModelSidebarList />
                         </div>
-                    </div>
+                    </div>)
+                    }
                 </div>
             </div>
             <div>

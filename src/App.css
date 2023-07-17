@@ -103,3 +103,6 @@ body{
 .container{
   @apply px-5
 }
+.clipped_text{
+  -webkit-text-fill-color: transparent;
+}
