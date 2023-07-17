@@ -23,6 +23,9 @@ module.exports = {
         'light-grey':'#2A2D37',
         'dark-grey':"#858585",
         'grey-text':"#9F9F9F",
+        'white-shade':"#D9D9D9",
+        'red-color':"#F94A2B",
+        'light-yellow':"#FAD97F"
       },
       minHeight: {
         '832': '832px',
