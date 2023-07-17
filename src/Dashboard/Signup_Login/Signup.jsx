@@ -267,8 +267,8 @@ const Signup = () => {
                       <input
                         type="password"
                         id="ConfirmPassword"
-                        name="confirmPassword"
-                        value={form.confirmPassword}
+                        name="confirmpassword"
+                        value={form.confirmpassword}
                         onChange={(e) => handleChange(e)}
                         className="bg-black border rounded-md sm:rounded-none sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
                         required
