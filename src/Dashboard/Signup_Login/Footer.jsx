@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
     return (
+        <div>
         <footer className="bg-white text-black">
             <div className="container mx-auto">
                 <div
@@ -62,6 +63,12 @@ const Footer = () => {
                 </div>
             </div>
         </footer>
+        <section class="copyright__block py-6 bg-black text-white">
+            <div class="container mx-auto">
+                <p class="text-center text-sm">Copyright © 1998-2023 Kaizen Globe. All Rights Reserved.</p>
+            </div>
+        </section>
+        </div>
     )
 }
 

@@ -15,7 +15,7 @@ const Layout = () => {
         if(relativePath === '/create_club' || relativePath === '/model_form' || relativePath === '/create_event' || relativePath === '/home'){
             setLayout('layout-1')
         }
-        else if(relativePath === '/event-page' || relativePath === '/club-page' || relativePath === '/travel-page' || relativePath === '/agency-travel-page' || relativePath === '/members-page'){
+        else if(relativePath === '/event-page' || relativePath === '/club-page' || relativePath === '/travel-page' || relativePath === '/agency-travel-page' || relativePath === '/member-models'){
             setLayout('layout-2')
         }
     },[relativePath])
@@ -29,7 +29,7 @@ const Layout = () => {
                             <Sidebar />
                         </div>
                     </div>
-                    <div className={`${layout === 'layout-1' ? 'w-full xl:w-3/5 sm:px-5' : 'w-full xl:w-4/5 sm:px-5 sm:pr-0'}`}>
+                    <div className={`${layout === 'layout-1' ? 'w-full xl:w-3/5 sm:px-5' : 'w-full xl:w-4/5 sm:px-5 xl:pr-0'}`}>
                         <div className='sticky top-0 h-full'>
                             <Outlet />
                         </div>

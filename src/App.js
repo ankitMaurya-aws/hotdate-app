@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import LandingPage from './LandingPage/LandingPage';
+import LandingPage from './LandingPage/Pages/LandingPage';
 import Signup from './Dashboard/Signup_Login/Signup';
 import Login from './Dashboard/Signup_Login/Login';
 import Layout from './Dashboard/Layout';
@@ -12,12 +12,28 @@ import EventPage from './Dashboard/MainDashboard/db_pages/EventPage';
 import ClubPage from './Dashboard/MainDashboard/db_pages/ClubPage';
 import TravelPage from './Dashboard/MainDashboard/db_pages/TravelPage';
 import AgencyTravelPage from './Dashboard/MainDashboard/db_pages/AgencyTravelPage';
+import MembersModels from './Dashboard/MainDashboard/db_pages/MembersModels';
+import LandingLayout from './LandingPage/LandingLayout';
+import ContactPage from './LandingPage/Pages/ContactPage';
+import AboutPage from './LandingPage/Pages/AboutPage';
+import LiveChatPage from './LandingPage/Pages/LiveChatPage';
+import ClubBookingPage from './LandingPage/Pages/ClubBookingPage';
+import ModelBookingPage from './LandingPage/Pages/ModelBookingPage';
+import FaqPage from './LandingPage/Pages/FaqPage';
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<LandingPage />} />
+        <Route path='/' element={<LandingLayout />}>
+          <Route path='/' element={<LandingPage />} />
+          <Route path='/contact' element={<ContactPage />} />
+          <Route path='/about' element={<AboutPage />} />
+          <Route path='/live-chat' element={<LiveChatPage />} />
+          <Route path='/club-booking' element={<ClubBookingPage />} />
+          <Route path='/model-booking' element={<ModelBookingPage />} />
+          <Route path='/faq' element={<FaqPage />} />
+        </Route>
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
         <Route path='/' element={<Layout />}>
@@ -29,6 +45,7 @@ function App() {
           <Route path='/club-page' element={<ClubPage />} />
           <Route path='/travel-page' element={<TravelPage />} />
           <Route path='/agency-travel-page' element={<AgencyTravelPage />} />
+          <Route path='/member-models' element={<MembersModels />} />
         </Route>
       </Routes>
     </>

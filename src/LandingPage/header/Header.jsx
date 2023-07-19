@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { RxCross1 } from "react-icons/rx";
 import { CgMenuRightAlt } from "react-icons/cg";
 
-const Header = () => {
+const Header = ({Lplayout}) => {
   const [openMenu, setOpenMenu] = useState(false);
+
   return (
-    <header className="landingpage_header_main absolute top-0 left-0 z-[999] w-full pt-5">
+    <header className={`landingpage_header_main top-0 left-0 z-[999] w-full py-5 ${Lplayout === 'light_layout' ? 'landingpage_header_bg' : 'absolute'}`}> 
       <div className="container mx-auto">
         <div className="landingpage_header flex flex-wrap items-center justify-between">
           <div className="w-[150px]">
