@@ -155,14 +155,10 @@ const Signup = () => {
       <div className="overflow-hidden">
         <Header />
         <div className="sign_up__block pt-65px mt-8 sm:mt-16">
-          <div className="container mx-auto relative z-1">
+            <div className="container mx-auto relative z-1">
             <div className="sign-up__header pt-14 pb-24 bg-white flex flex-col justify-center items-center rounded-t-3xl md:rounded-t-86">
-              <p className="text-2xl sm:text-3xl xl:text-40px text-black  font-normal">
-                Sign Up
-              </p>
-              <p className="text-lg text-black  font-normal">
-                Get Started it’s easy
-              </p>
+              <p className="text-2xl sm:text-3xl xl:text-40px text-black  font-normal">Sign Up</p>
+              <p className="text-lg text-black  font-normal">Get Started it’s easy</p>
             </div>
 
             <div className="sign-up__body grid grid-cols-1 md:grid-cols-2 rounded-3xl md:rounded-t-58 md:rounded-r-58 bg-black mt-[-50px] md:rounded-58 relative  border-b-2 border-t-[1px] border-orange">
@@ -171,130 +167,66 @@ const Signup = () => {
                   Find Your Date
                 </h2>
 
-                <form
-                  className="flex flex-col justify-center gap-y-4 sm:gap-y-6"
-                  autoComplete="off"
-                >
-                  <div>
-                    <div className="flex flex-wrap rounded-md input_field">
-                      <label
-                        htmlFor="email"
-                        className="rounded-l-md w-full md:w-[120px] xl:w-[195px] sm:h-[49px] flex items-center justify-start sm:px-2 lg:px-4 text-sm mb-1 sm:mb-0 md:text-text-xs xl:text-base text-white  font-normal leading-5 xl:leading-29 text-center 
-                                            lg:text-start"
-                      >
-                        Email address
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={form.email}
-                        onChange={(e) => handleChange(e)}
-                        autoComplete="off"
-                        className="bg-black border rounded-md sm:rounded-none sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
-                        placeholder="name@flowbite.com"
-                        required
-                      />
-                    </div>
-                    {formErrors.email && (
-                      <p className="w-full capitalize text-xs p-1">
-                        {formErrors.email}
-                      </p>
-                    )}
-                  </div>
-                  <div>
-                    <div className="flex flex-wrap rounded-md input_field">
-                      <label
-                        htmlFor="username"
-                        className="rounded-l-md w-full md:w-[120px] xl:w-[195px] sm:h-[49px] flex items-center justify-start sm:px-2 lg:px-4 text-sm mb-1 sm:mb-0 md:text-text-xs xl:text-base text-white  font-normal leading-5 xl:leading-29 text-center 
-                                            lg:text-start"
-                      >
-                        Username
-                      </label>
-                      <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        value={form.username}
-                        onChange={(e) => handleChange(e)}
-                        autoComplete="off"
-                        className="bg-black border rounded-md sm:rounded-none sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
-                        placeholder="name@flowbite.com"
-                        required
-                      />
-                    </div>
-                    {formErrors.username && (
-                      <p className="w-full capitalize text-xs p-1">
-                        {formErrors.username}
-                      </p>
-                    )}
-                  </div>
-                  <div>
-                    <div className="flex flex-wrap rounded-md input_field">
-                      <label
-                        htmlFor="password"
-                        className="rounded-l-md w-full md:w-[120px] xl:w-[195px] sm:h-[49px] flex items-center justify-start sm:px-2 lg:px-4 text-sm mb-1 sm:mb-0 md:text-text-xs xl:text-base text-white  font-normal leading-5 xl:leading-29 text-center 
-                                            lg:text-start"
-                      >
-                        Create Password
-                      </label>
-                      <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        value={form.password}
-                        onChange={(e) => handleChange(e)}
-                        autoComplete="off"
-                        className="bg-black border rounded-md sm:rounded-none sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
-                        required
-                      />
-                    </div>
-                    {formErrors.password && (
-                      <p className="w-full capitalize text-xs p-1">
-                        {formErrors.password}
-                      </p>
-                    )}
-                  </div>
-                  <div>
-                    <div className="flex flex-wrap rounded-md input_field">
-                      <label
-                        htmlFor="ConfirmPassword"
-                        className="rounded-l-md w-full md:w-[120px] xl:w-[195px] sm:h-[49px] flex items-center justify-start sm:px-2 lg:px-4 text-sm mb-1 sm:mb-0 md:text-text-xs xl:text-base text-white  font-normal leading-5 xl:leading-29 text-center 
-                                            lg:text-start"
-                      >
-                        Confirm Password
-                      </label>
-                      <input
-                        type="password"
-                        id="ConfirmPassword"
-                        name="confirmPassword"
-                        value={form.confirmPassword}
-                        onChange={(e) => handleChange(e)}
-                        className="bg-black border rounded-md sm:rounded-none sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
-                        required
-                      />
-                    </div>
-                    {formErrors.confirmpassword && (
-                      <p className="w-full capitalize text-xs p-1">
-                        {formErrors.confirmpassword}
-                      </p>
-                    )}
-                  </div>
-
-                  <div className="flex flex-col gap-30">
-                    <label
-                      htmlFor="intro_msg"
-                      className="gradient w-full h-[49px] flex items-center justify-center xl:text-base text-white  font-normal leading-29 rounded-md mb-6"
-                    >
-                      Introduction
-                    </label>
-                    <div className="p-[2px] gradient rounded-md">
-                      <textarea
-                        type="text"
-                        id="intro_msg"
-                        rows={3}
-                        name="introduction"
-                        value={form.introduction}
+                                <form className="flex flex-col justify-center gap-y-4 sm:gap-y-6"autoComplete="off">
+                                    <div>
+                                    <div className="flex flex-wrap rounded-md input_field">
+                                        <label htmlFor="email" className="rounded-l-md w-full md:w-[120px] xl:w-[195px] sm:h-[49px] flex items-center justify-start sm:px-2 lg:px-4 text-sm mb-1 sm:mb-0 md:text-text-xs xl:text-base text-white  font-normal leading-5 xl:leading-29 text-center 
+                                            lg:text-start">
+                                            Email address</label>
+                                        <input type="email" id="email" name="email"  value={form.email}
+                      onChange={(e) => handleChange(e)} autoComplete="off"
+                                            className="bg-black border rounded-md sm:rounded-none sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
+                                            placeholder="name@flowbite.com" required />
+                                    </div>
+                                  {formErrors.email && (<p className="w-full capitalize text-xs p-1">{formErrors.email}</p>)}
+                                    </div>
+                                    <div>
+                                    <div className="flex flex-wrap rounded-md input_field">
+                                        <label htmlFor="username"
+                                            className="rounded-l-md w-full md:w-[120px] xl:w-[195px] sm:h-[49px] flex items-center justify-start sm:px-2 lg:px-4 text-sm mb-1 sm:mb-0 md:text-text-xs xl:text-base text-white  font-normal leading-5 xl:leading-29 text-center 
+                                            lg:text-start">Username</label>
+                                        <input type="text" id="username" name="username"  value={form.username}
+                      onChange={(e) => handleChange(e)} autoComplete="off"
+                                            className="bg-black border rounded-md sm:rounded-none sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
+                                            placeholder="name@flowbite.com" required />
+                                    </div>
+                                    {formErrors.username && (<p className="w-full capitalize text-xs p-1">{formErrors.username}</p>)}
+                                    </div>
+                                    <div>
+                                    <div className="flex flex-wrap rounded-md input_field">
+                                        <label htmlFor="password" 
+                                            className="rounded-l-md w-full md:w-[120px] xl:w-[195px] sm:h-[49px] flex items-center justify-start sm:px-2 lg:px-4 text-sm mb-1 sm:mb-0 md:text-text-xs xl:text-base text-white  font-normal leading-5 xl:leading-29 text-center 
+                                            lg:text-start">Create
+                                            Password</label>
+                                        <input type="password" id="password" name="password" value={form.password}
+                      onChange={(e) => handleChange(e)} autoComplete="off"
+                                            className="bg-black border rounded-md sm:rounded-none sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
+                                            required />
+                                    </div>
+                                    {formErrors.password && (<p className="w-full capitalize text-xs p-1">{formErrors.password}</p>)}
+                                    </div>
+                                    <div>
+                                    <div className="flex flex-wrap rounded-md input_field">
+                                        <label htmlFor="ConfirmPassword"
+                                            className="rounded-l-md w-full md:w-[120px] xl:w-[195px] sm:h-[49px] flex items-center justify-start sm:px-2 lg:px-4 text-sm mb-1 sm:mb-0 md:text-text-xs xl:text-base text-white  font-normal leading-5 xl:leading-29 text-center 
+                                            lg:text-start">Confirm
+                                            Password</label>
+                                        <input type="password" id="ConfirmPassword" name="confirmPassword" value={form.confirmPassword} 
+                      onChange={(e) => handleChange(e)}
+                                            className="bg-black border rounded-md sm:rounded-none sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
+                                            required />
+                                    </div>
+                                    {formErrors.confirmpassword && (<p className="w-full capitalize text-xs p-1">{formErrors.confirmpassword}</p>)}
+                                    </div>
+                                    
+                                    <div className="flex flex-col gap-30">
+                                        <label htmlFor="intro_msg" 
+                                            className="gradient w-full h-[49px] flex items-center justify-center xl:text-base text-white  font-normal leading-29 rounded-md mb-6">Introduction</label>
+                                        <div className='p-[2px] gradient rounded-md'>
+                                            <textarea type="text" id="intro_msg"
+                                                rows={3}
+                                                name="introduction"
+                                                value={form.introduction}
                         onChange={(e) => handleChange(e)}
                         className="bg-black focus:outline-none focus-visible:none w-full border-gradient3 text-gray font-normal xl:text-lg rounded-md text-sm px-2 xl:px-4 py-2.5 items-center flex justify-between"
                         required

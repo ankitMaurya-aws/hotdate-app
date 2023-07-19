@@ -43,12 +43,22 @@ const Login = () => {
   };
   useEffect(() => {
     const token = cookies["token"];
-    if (token) {
+    try {
       const decodedToken = jwtDecode(token);
       if (decodedToken) {
-        console.log(decodedToken);
-        navigate("/home");
+        navigate("/");
       }
+    } catch (error) {
+      toast.error("🦄 Something went wrong!", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
     // eslint-disable-next-line
   }, []);
@@ -72,7 +82,6 @@ const Login = () => {
             theme: "colored",
           });
         } else {
-          setCookie("token", data.data.token, { maxAge: 60 * 60 * 24 });
           if (rememberMe) {
             setCookie("token", data.data.token, { maxAge: 60 * 60 * 24 * 7 });
           }
@@ -88,7 +97,6 @@ const Login = () => {
             progress: undefined,
             theme: "colored",
           });
-          navigate("/home");
         }
       } catch (error) {
         toast.error("🦄 Unable to login!", {
@@ -121,76 +129,44 @@ const Login = () => {
       <div className="overflow-hidden">
         <Header />
         <div className="sign_up__block pt-65px mt-8 sm:mt-16">
-          <div className="container mx-auto relative z-1">
-            <div className="sign-up__header pt-14 pb-24 bg-white flex flex-col justify-center items-center rounded-t-3xl md:rounded-t-86">
-              <p className="text-2xl sm:text-3xl xl:text-40px text-black  font-normal">
-                Login
-              </p>
-              <p className="text-lg text-black  font-normal">Welcome Back</p>
-            </div>
-            <div className="sign-up__body grid grid-cols-1 md:grid-cols-2 rounded-3xl md:rounded-t-58 md:rounded-r-58 bg-black mt-[-50px] md:rounded-58 relative  border-b-2 border-t-[1px] border-orange">
-              <div className="sign-up__form flex flex-col justify-center gap-30 py-6 px-6 lg:py-11 lg:px-14">
-                <h2 className="text-white text-2xl sm:text-3xl xl:text-5xl text-start font-bold mb-6">
-                  Nice to see you again
-                </h2>
-                <form
-                  className="flex flex-col justify-center gap-y-4 sm:gap-y-6"
-                  autoComplete="off"
-                >
-                  <div>
-                    <div className="flex flex-wrap rounded-md input_field">
-                      <label
-                        htmlFor="username"
-                        className="rounded-l-md sm:w-[100px] xl:w-[195px] mb-1 sm:mb-0 sm:h-[49px] flex items-center justify-center lg:justify-start ps-0 lg:ps-4 text-sm xl:text-lg text-white  font-normal leading-5 xl:leading-29 text-center lg:text-start"
-                      >
-                        Login
-                      </label>
-                      <input
-                        name="email"
-                        value={login.email}
-                        onChange={(e) => handleChange(e)}
-                        type="text"
-                        id="username"
-                        autoComplete="off"
-                        className="bg-black border rounded-md sm:border-none sm:border-l-2 border-orange focus:outline-none focus-visible:none w-full sm:w-[calc(100%-100px)] xl:w-[calc(100%-195px)] h-[49px] border-gradient3 text-gray font-normal xl:text-lg sm:rounded-none sm:rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
-                        placeholder="Email or Phone Number"
-                        required
-                      />
-                    </div>
-                    {loginErrors.email && (
-                      <p className="w-full capitalize text-xs p-1">
-                        {loginErrors.email}
-                      </p>
-                    )}
-                  </div>
-                  <div className="flex flex-wrap rounded-md input_field">
-                    <label
-                      htmlFor="password"
-                      className="rounded-l-md sm:w-[100px] xl:w-[195px] mb-1 sm:mb-0 sm:h-[49px] flex items-center justify-center lg:justify-start ps-0 lg:ps-4 text-sm xl:text-lg text-white  font-normal leading-5 xl:leading-29 text-center lg:text-start"
-                    >
-                      Password
-                    </label>
-                    <input
-                      type="password"
-                      name="password"
+            <div className="container mx-auto relative z-1">
+                <div
+                    className="sign-up__header pt-14 pb-24 bg-white flex flex-col justify-center items-center rounded-t-3xl md:rounded-t-86">
+                    <p className="text-2xl sm:text-3xl xl:text-40px text-black  font-normal">Login</p>
+                    <p className="text-lg text-black  font-normal">Welcome Back</p>
+                </div>
+               <div
+                            className="sign-up__body grid grid-cols-1 md:grid-cols-2 rounded-3xl md:rounded-t-58 md:rounded-r-58 bg-black mt-[-50px] md:rounded-58 relative  border-b-2 border-t-[1px] border-orange">
+                            <div className="sign-up__form flex flex-col justify-center gap-30 py-6 px-6 lg:py-11 lg:px-14">
+                                <h2 className="text-white text-2xl sm:text-3xl xl:text-5xl text-start font-bold mb-6">Nice to see you again</h2>
+                                <form className="flex flex-col justify-center gap-y-4 sm:gap-y-6"autoComplete="off">
+                                    <div>
+                                    <div className="flex flex-wrap rounded-md input_field">
+                                        <label htmlFor="username"
+                                            className="rounded-l-md sm:w-[100px] xl:w-[195px] mb-1 sm:mb-0 sm:h-[49px] flex items-center justify-center lg:justify-start ps-0 lg:ps-4 text-sm xl:text-lg text-white  font-normal leading-5 xl:leading-29 text-center lg:text-start">Login</label>
+                                        <input   name="email"
+                      value={login.email}
+                      onChange={(e) => handleChange(e)} type="text" id="username" autoComplete="off"
+                                            className="bg-black border rounded-md sm:border-none sm:border-l-2 border-orange focus:outline-none focus-visible:none w-full sm:w-[calc(100%-100px)] xl:w-[calc(100%-195px)] h-[49px] border-gradient3 text-gray font-normal xl:text-lg sm:rounded-none sm:rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
+                                            placeholder="Email or Phone Number" required />
+                                    </div>
+                                        {loginErrors.email && (<p className="w-full capitalize text-xs p-1">{loginErrors.email}</p>)}
+                                        </div>
+                                    <div className="flex flex-wrap rounded-md input_field">
+                                        <label htmlFor="password" 
+                                            className="rounded-l-md sm:w-[100px] xl:w-[195px] mb-1 sm:mb-0 sm:h-[49px] flex items-center justify-center lg:justify-start ps-0 lg:ps-4 text-sm xl:text-lg text-white  font-normal leading-5 xl:leading-29 text-center lg:text-start">Password</label>
+                                        <input type="password"    name="password"
                       value={login.password}
-                      onChange={(e) => handleChange(e)}
-                      id="password"
-                      autoComplete="off"
-                      placeholder="Enter Password"
-                      className="bg-black border rounded-md sm:border-none sm:border-l-2 border-orange focus:outline-none focus-visible:none w-full sm:w-[calc(100%-100px)] xl:w-[calc(100%-195px)] h-[49px] border-gradient3 text-gray font-normal xl:text-lg sm:rounded-none sm:rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
-                      required
-                    />
-                  </div>
-                  <div className="flex flex-wrap gap-y-5 items-center justify-between">
-                    <div className="flex items-center">
-                      <div className="flex items-center h-5">
-                        <input
-                          id="remember"
-                          type="checkbox"
-                          onChange={() => setRememberMe(!rememberMe)}
-                          value={rememberMe}
-                          className="sm:w-[29px] sm:h-[31px] border border-gray-300 rounded bg-gray-50 focus:ring-3
+                      onChange={(e) => handleChange(e)} id="password" autoComplete="off"
+                                        placeholder='Enter Password'
+                                            className="bg-black border rounded-md sm:border-none sm:border-l-2 border-orange focus:outline-none focus-visible:none w-full sm:w-[calc(100%-100px)] xl:w-[calc(100%-195px)] h-[49px] border-gradient3 text-gray font-normal xl:text-lg sm:rounded-none sm:rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
+                                            required />
+                                    </div>
+                                    <div className="flex flex-wrap gap-y-5 items-center justify-between">
+                                        <div className='flex items-center'>
+                                            <div className="flex items-center h-5">
+                                                <input id="remember" type="checkbox"  onChange={() => setRememberMe(!rememberMe)}
+                          value={rememberMe} className="sm:w-[29px] sm:h-[31px] border border-gray-300 rounded bg-gray-50 focus:ring-3
                                                         focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 
                                                         dark:focus:ring-offset-gray-800"
                           required
