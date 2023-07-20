@@ -43,22 +43,12 @@ const Login = () => {
   };
   useEffect(() => {
     const token = cookies["token"];
-    try {
+    if (token) {
       const decodedToken = jwtDecode(token);
       if (decodedToken) {
-        navigate("/");
+        console.log(decodedToken);
+        navigate("/home");
       }
-    } catch (error) {
-      toast.error("🦄 Something went wrong!", {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
     }
     // eslint-disable-next-line
   }, []);
@@ -82,6 +72,7 @@ const Login = () => {
             theme: "colored",
           });
         } else {
+          setCookie("token", data.data.token, { maxAge: 60 * 60 * 24 });
           if (rememberMe) {
             setCookie("token", data.data.token, { maxAge: 60 * 60 * 24 * 7 });
           }
@@ -97,6 +88,7 @@ const Login = () => {
             progress: undefined,
             theme: "colored",
           });
+          navigate("/home");
         }
       } catch (error) {
         toast.error("🦄 Unable to login!", {
@@ -143,7 +135,7 @@ const Login = () => {
                 </h2>
                 <form
                   className="flex flex-col justify-center gap-y-4 sm:gap-y-6"
-                  autocomplete="off"
+                  autoComplete="off"
                 >
                   <div>
                     <div className="flex flex-wrap rounded-md input_field">
@@ -159,7 +151,7 @@ const Login = () => {
                         onChange={(e) => handleChange(e)}
                         type="text"
                         id="username"
-                        autocomplete="off"
+                        autoComplete="off"
                         className="bg-black border rounded-md sm:border-none sm:border-l-2 border-orange focus:outline-none focus-visible:none w-full sm:w-[calc(100%-100px)] xl:w-[calc(100%-195px)] h-[49px] border-gradient3 text-gray font-normal xl:text-lg sm:rounded-none sm:rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
                         placeholder="Email or Phone Number"
                         required
@@ -184,7 +176,7 @@ const Login = () => {
                       value={login.password}
                       onChange={(e) => handleChange(e)}
                       id="password"
-                      autocomplete="off"
+                      autoComplete="off"
                       placeholder="Enter Password"
                       className="bg-black border rounded-md sm:border-none sm:border-l-2 border-orange focus:outline-none focus-visible:none w-full sm:w-[calc(100%-100px)] xl:w-[calc(100%-195px)] h-[49px] border-gradient3 text-gray font-normal xl:text-lg sm:rounded-none sm:rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
                       required

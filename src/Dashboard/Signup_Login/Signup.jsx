@@ -173,7 +173,7 @@ const Signup = () => {
 
                 <form
                   className="flex flex-col justify-center gap-y-4 sm:gap-y-6"
-                  autocomplete="off"
+                  autoComplete="off"
                 >
                   <div>
                     <div className="flex flex-wrap rounded-md input_field">
@@ -190,7 +190,7 @@ const Signup = () => {
                         name="email"
                         value={form.email}
                         onChange={(e) => handleChange(e)}
-                        autocomplete="off"
+                        autoComplete="off"
                         className="bg-black border rounded-md sm:rounded-none sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
                         placeholder="name@flowbite.com"
                         required
@@ -217,7 +217,7 @@ const Signup = () => {
                         name="username"
                         value={form.username}
                         onChange={(e) => handleChange(e)}
-                        autocomplete="off"
+                        autoComplete="off"
                         className="bg-black border rounded-md sm:rounded-none sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
                         placeholder="name@flowbite.com"
                         required
@@ -244,7 +244,7 @@ const Signup = () => {
                         name="password"
                         value={form.password}
                         onChange={(e) => handleChange(e)}
-                        autocomplete="off"
+                        autoComplete="off"
                         className="bg-black border rounded-md sm:rounded-none sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
                         required
                       />
@@ -267,8 +267,8 @@ const Signup = () => {
                       <input
                         type="password"
                         id="ConfirmPassword"
-                        name="confirmpassword"
-                        value={form.confirmpassword}
+                        name="confirmPassword"
+                        value={form.confirmPassword}
                         onChange={(e) => handleChange(e)}
                         className="bg-black border rounded-md sm:rounded-none sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
                         required

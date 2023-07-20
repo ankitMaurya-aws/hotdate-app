@@ -20,13 +20,13 @@ const EventCard = ({ event }) => {
   return (
     <div className="w-full cursor-pointer">
       <img
-        src={event.images[0]}
+        src={event?.images[0]}
         alt="event-img"
         className="w-full object-cover aspect-11/10 rounded-t-2xl"
       />
       <div className="bg-light-grey p-4 rounded-b-2xl">
         <div className="flex flex-wrap justify-between gap-x-3 gap-y-2">
-          <h3 className="text-lg">{event.eventName}</h3>
+          <h3 className="text-lg">{event?.eventName}</h3>
           <div className="date_picker relative">
             <img
               src="images/calendar-icon.png"
@@ -35,12 +35,12 @@ const EventCard = ({ event }) => {
             />
             <DatePicker
               dateFormat="yyyy/MM/dd"
-              selected={new Date(event.date)}
+              selected={new Date(event?.date)}
             />
           </div>
         </div>
         <p className="text-xs my-3">
-          <strong className="font-semibold">{event.type} by </strong>
+          <strong className="font-semibold">{event?.type} by </strong>
           <span className="text-yellow-2">{username}</span>
         </p>
         <div className="flex items-center justify-between">
@@ -80,7 +80,7 @@ const EventCard = ({ event }) => {
                 />
               </g>
             </svg>
-            {event.location}
+            {event?.location}
           </p>
           <div className="flex items-center gap-2">
             <img src="images/male-user.png" alt="male-user" />

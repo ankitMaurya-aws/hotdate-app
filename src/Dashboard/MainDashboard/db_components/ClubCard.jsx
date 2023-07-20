@@ -7,17 +7,17 @@ const ClubCard = ({ clubs }) => {
     <div className="w-full cursor-pointer p-3 bg-light-grey rounded-2xl flex flex-wrap sm:grid grid-cols-2">
       <div className="w-2/5 sm:w-full">
         <img
-          src="images/club-img.png"
+          src={clubs.image[0]}
           alt="event-img"
           className="w-full object-cover aspect-11/10 rounded-2xl"
-        />
+        />  
       </div>
       <div className="w-3/5 sm:w-full px-4 pr-6 grid content-between relative">
         <div className="">
           <h3 className="text-base sm:text-lg sm:leading-5 break-all max-w-[100px]">
             {clubs.clubname}
           </h3>
-          <span className="text-xs">by Ritul</span>
+          <span className="text-xs">by {clubs.owner_name}</span>
         </div>
         <div className="grid text-[10px] gap-y-1">
           <p className="flex items-center gap-1 font-light">

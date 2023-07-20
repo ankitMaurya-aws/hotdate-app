@@ -1,16 +1,42 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import jwtDecode from "jwt-decode";
+import axios from "axios";
 const Sidebar = () => {
+  const [userInfo, setUserInfo] = useState({});
+  const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    removeCookie("token");
+    navigate("/");
+  };
+
+  useEffect(() => {
+    const token = cookies["token"];
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      userDetails(decodedToken);
+    } else {
+      navigate("/login");
+    }
+  }, []);
+
+  const userDetails = async (token) => {
+    console.log(token);
+    const { data } = await axios.get(`${BASE_URL}/api/findone/${token.userId}`);
+    setUserInfo(data);
+  };
   return (
     <div className="sidebar xl:w-60">
       <div>
         <img
-          src="images/sidebar_user_img.png"
+          src={userInfo.image}
           className="hidden aspect-square object-cover xl:block"
         />
         <div className="pt-0 pb-8 xl:py-8 border-b border-dark-grey">
-          <h3 className="font-semibold text-22px mb-3">Horny Chantline</h3>
+          <h3 className="font-semibold text-22px mb-3">{userInfo.username}</h3>
           <p className="flex items-center justify-between gap-4 mb-3">
             Russia
             <Link className="cursor-pointer">
@@ -73,16 +99,16 @@ const Sidebar = () => {
                   <path
                     d="M9 17.9727C6.89063 14.8086 3.19922 10.5195 3.19922 6.82812C3.19922 3.62957 5.80145 1.02734 9 1.02734C12.1986 1.02734 14.8008 3.62957 14.8008 6.82812C14.8008 10.5195 11.1094 14.8086 9 17.9727Z"
                     stroke="white"
-                    stroke-miterlimit="10"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M9 9.46484C7.54618 9.46484 6.36328 8.28194 6.36328 6.82812C6.36328 5.37431 7.54618 4.19141 9 4.19141C10.4538 4.19141 11.6367 5.37431 11.6367 6.82812C11.6367 8.28194 10.4538 9.46484 9 9.46484Z"
                     stroke="white"
-                    stroke-miterlimit="10"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </g>
               </svg>
@@ -99,7 +125,7 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className="mb-3">
-            <Link className="inline-flex items-center gap-3">
+            <Link to="/event-page" className="inline-flex items-center gap-3">
               <span className="block w-6">
                 <img src="images/event-icon.png" />
               </span>
@@ -107,7 +133,7 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className="mb-3">
-            <Link className="inline-flex items-center gap-3">
+            <Link to="/club-page" className="inline-flex items-center gap-3">
               <span className="block w-6">
                 <img src="images/club-icon.png" />
               </span>
@@ -138,7 +164,7 @@ const Sidebar = () => {
               Models
             </Link>
           </li>
-          <li className="mb-3">
+          <li className="mb-3" onClick={handleLogout}>
             <Link className="inline-flex items-center gap-3">
               <span className="block w-6">
                 <img src="images/logout-icon.png" />
@@ -151,5 +177,4 @@ const Sidebar = () => {
     </div>
   );
 };
-
 export default Sidebar;

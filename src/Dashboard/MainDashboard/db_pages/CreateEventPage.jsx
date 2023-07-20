@@ -18,7 +18,7 @@ const CreateEventPage = () => {
   const [userToken, setUserToken] = useState("");
   const navigate = useNavigate();
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-  const [cookies, setCookie] = useCookies(["cookie-name"]);
+  const [cookies] = useCookies(["cookie-name"]);
 
   useEffect(() => {
     const token = cookies["token"];
@@ -64,7 +64,7 @@ const CreateEventPage = () => {
     formData.append("description", event.Description);
 
     formData.append("type", event.event_type);
-    console.log(formData);
+
     const headers = {
       "Content-Type": "multipart/form-data",
       token: userToken,
