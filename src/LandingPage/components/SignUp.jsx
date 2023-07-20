@@ -38,7 +38,7 @@ const SignUp = () => {
     navigate("/signup");
   };
   return (
-    <section className="relative signup_section">
+    <section className="relative signup_section text-black">
       <div className="container mx-auto">
         <div className="p-[3px] gradient relative rounded-2xl sm:rounded-50px -mt-16 z-[99]">
           <div className="p-2 bg-black rounded-2xl sm:rounded-50px">

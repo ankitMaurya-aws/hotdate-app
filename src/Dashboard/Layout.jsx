@@ -24,11 +24,10 @@ const Layout = () => {
       relativePath === "/club-page" ||
       relativePath === "/travel-page" ||
       relativePath === "/agency-travel-page" ||
-      relativePath === "/members-page"
+      relativePath === "/member-models"
     ) {
       setLayout("layout-2");
     }
-    console.log(layout);
   }, [relativePath]);
   return (
     <div className="main_dashboard_wrapper bg-black-20 text-white grid content-between min-h-screen">
@@ -44,7 +43,7 @@ const Layout = () => {
             className={`${
               layout === "layout-1"
                 ? "w-full xl:w-3/5 sm:px-5"
-                : "w-full xl:w-4/5 sm:px-5 sm:pr-0"
+                : "w-full xl:w-4/5 sm:px-5 xl:pr-0"
             }`}
           >
             <div className="sticky top-0 h-full">
@@ -78,5 +77,4 @@ const Layout = () => {
     </div>
   );
 };
-
 export default Layout;

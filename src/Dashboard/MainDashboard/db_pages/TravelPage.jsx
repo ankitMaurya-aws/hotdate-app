@@ -7,7 +7,7 @@ import Pagination from '../db_components/Pagination'
 
 const TravelPage = () => {
     return (
-        <div className='bg-black py-8 px-6 rounded-2xl rounded-r-none'>
+        <div className='bg-black py-8 px-6 rounded-2xl xl:rounded-r-none'>
             <div className='flex justify-between flex-wrap gap-5 items-center mb-5'>
                 <h3 className='text-2xl sm:text-5xl leading-none font-bold'>Travel</h3>
                 <div className='flex gap-2 flex-wrap'>
