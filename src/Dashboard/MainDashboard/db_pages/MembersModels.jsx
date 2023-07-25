@@ -1,5 +1,5 @@
 import React from 'react'
-import Pagination from '../db_components/Pagination'
+import { Link } from 'react-router-dom'
 
 const MembersModels = () => {
     return (
@@ -61,7 +61,12 @@ const MembersModels = () => {
                         </div>
                     </div>
                 </div>
-                <Pagination />
+                <div className='flex flex-wrap gap-5 justify-between mt-20'>
+                    <Link className='primary_btn capitalize !font-normal'>Click here to register yourself as a model</Link>
+                    <Link className='primary_btn !font-semibold'>Next Page</Link>
+                </div>
+
+                
             </div>
         </div>
     )

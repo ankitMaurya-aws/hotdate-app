@@ -20,6 +20,8 @@ import LiveChatPage from './LandingPage/Pages/LiveChatPage';
 import ClubBookingPage from './LandingPage/Pages/ClubBookingPage';
 import ModelBookingPage from './LandingPage/Pages/ModelBookingPage';
 import FaqPage from './LandingPage/Pages/FaqPage';
+import WithdrawlPage from './LandingPage/Pages/WithdrawlPage';
+import UserDetailPage from './LandingPage/Pages/UserDetailPage';
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
           <Route path='/club-booking' element={<ClubBookingPage />} />
           <Route path='/model-booking' element={<ModelBookingPage />} />
           <Route path='/faq' element={<FaqPage />} />
+          <Route path='/withdraw' element={<WithdrawlPage />} />
+          <Route path='/user-detail' element={<UserDetailPage />} />
         </Route>
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
