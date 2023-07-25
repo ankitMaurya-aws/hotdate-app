@@ -38,18 +38,18 @@ function App() {
           <Route path='/withdraw' element={<WithdrawlPage />} />
           <Route path='/user-detail' element={<UserDetailPage />} />
         </Route>
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/' element={<Layout />}>
-          <Route path='/home' element={<HomePage />} />
-          <Route path='/create_event' element={<CreateEventPage />} />
-          <Route path='/model_form' element={<ModelDetailForm />} />
-          <Route path='/create_club' element={<CreateClubPage />} />
-          <Route path='/event-page' element={<EventPage />} />
-          <Route path='/club-page' element={<ClubPage />} />
-          <Route path='/travel-page' element={<TravelPage />} />
-          <Route path='/agency-travel-page' element={<AgencyTravelPage />} />
-          <Route path='/member-models' element={<MembersModels />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/create_event" element={<CreateEventPage />} />
+          <Route path="/model_form" element={<ModelDetailForm />} />
+          <Route path="/create_club" element={<CreateClubPage />} />
+          <Route path="/event-page" element={<EventPage />} />
+          <Route path="/club-page" element={<ClubPage />} />
+          <Route path="/travel-page" element={<TravelPage />} />
+          <Route path="/agency-travel-page" element={<AgencyTravelPage />} />
+          <Route path="/member-models" element={<MembersModels />} />
         </Route>
       </Routes>
     </>

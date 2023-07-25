@@ -65,11 +65,9 @@ const MembersModels = () => {
                     <Link className='primary_btn capitalize !font-normal'>Click here to register yourself as a model</Link>
                     <Link className='primary_btn !font-semibold'>Next Page</Link>
                 </div>
-
-                
             </div>
-        </div>
-    )
-}
+          </div>
+  );
+};
 
-export default MembersModels
+export default MembersModels;
