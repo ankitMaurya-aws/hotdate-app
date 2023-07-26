@@ -22,19 +22,19 @@ const ModelDetailForm = () => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const [cookies] = useCookies(["cookie-name"]);
 
-  useEffect(() => {
-    const token = cookies["token"];
-    if (token) {
-      const decodedToken = jwtDecode(token);
-      if (decodedToken) {
-        setUserToken(token);
-      } else {
-        navigate("/");
-      }
-    } else {
-      navigate("/login");
-    }
-  }, []);
+  // useEffect(() => {
+  //   const token = cookies["token"];
+  //   if (token) {
+  //     const decodedToken = jwtDecode(token);
+  //     if (decodedToken) {
+  //       setUserToken(token);
+  //     } else {
+  //       navigate("/");
+  //     }
+  //   } else {
+  //     navigate("/login");
+  //   }
+  // }, []);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setModel({ ...model, [name]: value });

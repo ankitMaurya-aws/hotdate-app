@@ -1,19 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import EventCard from "../db_components/EventCard";
 import Pagination from "../db_components/Pagination";
 import axios from "axios";
+import { Context } from "../../../Context/context";
 
 const EventPage = () => {
   const [event, setEvent] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(8);
+  const { searchquery } = useContext(Context);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const getEvent = async () => {
-    const { data } = await axios.get(`${BASE_URL}/api/events`);
+    const { data } = await axios.get(`${BASE_URL}/api/events?q=${searchquery}`);
     console.log(data.data);
     setEvent(data.data);
   };
   useEffect(() => {
     getEvent();
-  }, []);
+  }, [searchquery]);
+
+  const lastPostIndex = currentPage * recordsPerPage;
+  const firstPostIndex = lastPostIndex - recordsPerPage;
+  const currentPost = event.slice(firstPostIndex, lastPostIndex);
   return (
     <div className="bg-black pt-0 sm:pt-8 py-8 px-6 rounded-2xl xl:rounded-r-none min-h-full">
       <div className="sticky top-0 bg-black z-[9] py-5 flex justify-between">
@@ -51,11 +59,16 @@ const EventPage = () => {
         </div>
       </div>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        {event.map((el, i) => (
+        {currentPost.map((el, i) => (
           <EventCard key={i} event={el} />
         ))}
       </div>
-      <Pagination />
+      <Pagination
+        totalPosts={event.length}
+        postsPerPage={recordsPerPage}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
     </div>
   );
 };

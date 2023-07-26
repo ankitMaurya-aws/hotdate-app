@@ -1,29 +1,28 @@
 import React, { useEffect, useState } from "react";
 import Header from "./header/Header";
 import Footer from "./Footer/Footer";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import "./landingpage.css";
 import Footer2 from "../Dashboard/Signup_Login/Footer";
 
 const LandingLayout = () => {
   const [Lplayout, setLplayout] = useState("dark_layout");
   const [LpFooterlayout, setLpFooterlayout] = useState("footer_layout_1");
-  const baseUrl = window.location.origin;
-  const pageUrl = window.location.pathname;
-  const relativePath = pageUrl.replace(baseUrl, "");
+  const location = useLocation();
+  const { pathname } = location;
   useEffect(() => {
-    if (relativePath === "/contact") {
+    if (pathname === "/contact") {
       setLplayout("light_layout");
     } else {
       setLplayout("dark_layout");
     }
     // footer layout
-    if (relativePath === "/") {
+    if (pathname === "/") {
       setLpFooterlayout("footer_layout_1");
     } else {
       setLpFooterlayout("footer_layout_2");
     }
-  }, [Lplayout, relativePath]);
+  }, [Lplayout, pathname]);
   return (
     <div
       className={`${

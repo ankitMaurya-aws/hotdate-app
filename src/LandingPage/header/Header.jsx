@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 import { RxCross1 } from "react-icons/rx";
 import { CgMenuRightAlt } from "react-icons/cg";
 
-const Header = ({Lplayout}) => {
+const Header = ({ Lplayout }) => {
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <header className={`landingpage_header_main top-0 left-0 z-[999] w-full py-5 ${Lplayout === 'light_layout' ? 'landingpage_header_bg' : 'absolute'}`}> 
+    <header
+      className={`landingpage_header_main top-0 left-0 z-[999] w-full py-5 ${
+        Lplayout === "light_layout" ? "landingpage_header_bg" : "absolute"
+      }`}
+    >
       <div className="container mx-auto">
         <div className="landingpage_header flex flex-wrap items-center justify-between">
           <div className="w-[150px]">
@@ -56,13 +60,13 @@ const Header = ({Lplayout}) => {
                   <Link to="/login">login</Link>
                 </li>
                 <li className="uppercase px-5">
-                  <Link>Live chat</Link>
+                  <Link to="/live-chat">Live chat</Link>
                 </li>
                 <li className="uppercase px-5">
-                  <Link>Contact</Link>
+                  <Link to="/contact">Contact</Link>
                 </li>
                 <li className="uppercase px-5">
-                  <Link>About us</Link>
+                  <Link to="/about">About us</Link>
                 </li>
               </ul>
               <div className="lg:w-[150px] flex lg:justify-end lg:px-0 px-5 mt-5 lg:mt-0">

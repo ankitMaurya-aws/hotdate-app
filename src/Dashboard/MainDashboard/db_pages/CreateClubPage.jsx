@@ -8,6 +8,7 @@ const CreateClubPage = () => {
   const [club, setClub] = useState({
     club_name: "",
     location: "",
+    booking: "",
     Description: "",
     club_type: "",
   });
@@ -46,6 +47,7 @@ const CreateClubPage = () => {
 
   const handleClub = async (e) => {
     e.preventDefault();
+    console.log(club);
     const formData = new FormData();
     if (SelectedImage) {
       SelectedImage.forEach((image) => formData.append("image", image));
@@ -58,6 +60,7 @@ const CreateClubPage = () => {
     formData.append("location", club.location);
     formData.append("description", club.Description);
     formData.append("clubtype", club.club_type);
+    formData.append("booking_price", club.booking);
 
     const headers = {
       "Content-Type": "multipart/form-data",
@@ -80,12 +83,6 @@ const CreateClubPage = () => {
           theme: "colored",
         });
       } else {
-        setClub({
-          club_name: "",
-          location: "",
-          Description: "",
-          club_type: "",
-        });
         toast.success("🦄Club Created Successfully!", {
           position: "top-right",
           autoClose: 2000,
@@ -95,6 +92,13 @@ const CreateClubPage = () => {
           draggable: true,
           progress: undefined,
           theme: "colored",
+        });
+        setClub({
+          club_name: "",
+          location: "",
+          booking: "",
+          Description: "",
+          club_type: "",
         });
         setSelectedImage(null);
         setSelectedVideo(null);
@@ -159,6 +163,25 @@ const CreateClubPage = () => {
                   required
                 />
               </div>
+              <div className="flex flex-wrap rounded-md input_field_2">
+                <label
+                  htmlFor="booking"
+                  className="rounded-l-md w-full md:w-[120px] xl:w-[195px] sm:h-[49px] flex items-center justify-start sm:px-2 lg:px-4 text-sm mb-1 sm:mb-0 md:text-text-xs xl:text-lg text-white  font-normal leading-5 xl:leading-29 text-center 
+                                            lg:text-start"
+                >
+                  Booking Amount
+                </label>
+                <input
+                  type="text"
+                  id="booking"
+                  name="booking"
+                  value={club.booking}
+                  onChange={handleChange}
+                  autoComplete="off"
+                  className="bg-black border md:rounded-l-none rounded-md md:border-none md:border-l-2 md:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
+                  required
+                />
+              </div>
               <div className="flex flex-col gap-30">
                 <label
                   htmlFor="Description"
@@ -219,6 +242,7 @@ const CreateClubPage = () => {
                     className="hidden"
                     name="club_type"
                     value="Private Place"
+                    checked={club.club_type === "Private Place"}
                     onChange={handleChange}
                   />
                   <label htmlFor="private_place">
@@ -233,6 +257,7 @@ const CreateClubPage = () => {
                     className="hidden"
                     name="club_type"
                     value="Public Place"
+                    checked={club.club_type === "Public Place"}
                     onChange={handleChange}
                   />
                   <label htmlFor="public_place">
@@ -247,6 +272,7 @@ const CreateClubPage = () => {
                     className="hidden"
                     name="club_type"
                     value="Virtual Date"
+                    checked={club.club_type === "Virtual Date"}
                     onChange={handleChange}
                   />
                   <label htmlFor="virtual_date">

@@ -1,34 +1,33 @@
 import React, { useEffect, useState } from "react";
 import DbHeader from "./MainDashboard/header/DbHeader";
 import Footer from "./Signup_Login/Footer";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "./MainDashboard/db_components/Sidebar";
 import "./MainDashboard/db_components/sidebar.css";
 import ModelSidebarList from "./MainDashboard/db_components/ModelSidebarList";
 
 const Layout = () => {
   const [layout, setLayout] = useState("layout-1");
-  const baseUrl = window.location.origin;
-  const pageUrl = window.location.pathname;
-  const relativePath = pageUrl.replace(baseUrl, "");
+  const location = useLocation();
+  const { pathname } = location;
   useEffect(() => {
     if (
-      relativePath === "/create_club" ||
-      relativePath === "/model_form" ||
-      relativePath === "/create_event" ||
-      relativePath === "/home"
+      pathname === "/create_club" ||
+      pathname === "/model_form" ||
+      pathname === "/create_event" ||
+      pathname === "/home"
     ) {
       setLayout("layout-1");
     } else if (
-      relativePath === "/event-page" ||
-      relativePath === "/club-page" ||
-      relativePath === "/travel-page" ||
-      relativePath === "/agency-travel-page" ||
-      relativePath === "/member-models"
+      pathname === "/event-page" ||
+      pathname === "/club-page" ||
+      pathname === "/travel-page" ||
+      pathname === "/agency-travel-page" ||
+      pathname === "/member-models"
     ) {
       setLayout("layout-2");
     }
-  }, [relativePath]);
+  }, [pathname]);
   return (
     <div className="main_dashboard_wrapper bg-black-20 text-white grid content-between min-h-screen">
       <div>

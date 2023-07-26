@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../../Context/context";
+import axios from "axios";
 
 const ModelBookingPage = () => {
+  const [model, setModel] = useState({});
+  const { modelId } = useContext(Context);
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  useEffect(() => {
+    getModel();
+  }, []);
+
+  const getModel = async () => {
+    const { data } = await axios.get(`${BASE_URL}/api/getModel/${modelId}`);
+    console.log(data);
+    setModel(data);
+  };
+  console.log(model);
   return (
     <div className="bg-black-20">
       <div className="min-h-[350px] md:min-h-[400px] flex justify-center items-end bg-black rounded-b-50px">
@@ -14,13 +30,15 @@ const ModelBookingPage = () => {
         <div className="flex flex-wrap items-stretch max-w-5xl bg-white rounded-xl mx-auto">
           <div className="w-full md:w-[35%] border-t-2 md:border-t-0 md:border-l-2 border-orange rounded-xl">
             <img
-              src="landingPage/images/book-model.png"
+              src={model.images}
               alt="book-model"
               className="rounded-2xl h-full object-cover w-full"
             />
           </div>
           <div className="w-full md:w-[65%] p-5 sm:p-8 text-black max-w-lg mx-auto">
-            <h3 className="text-3xl font-normal mb-3">Emily Johns</h3>
+            <h3 className="text-3xl font-normal mb-3">
+              {model.firstName} {model.lastName}
+            </h3>
             <div className="flex flex-wrap justify-between gap-3 mb-3">
               <p className="flex flex-wrap text-lg">
                 <img
@@ -51,7 +69,7 @@ const ModelBookingPage = () => {
               <p className="text-lg">
                 Booking Price : <span>$200</span>
               </p>
-              <Link className="primary_btn">Book Club</Link>
+              <Link className="primary_btn">Book Model</Link>
             </div>
           </div>
         </div>
