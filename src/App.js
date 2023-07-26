@@ -22,6 +22,7 @@ import ModelBookingPage from './LandingPage/Pages/ModelBookingPage';
 import FaqPage from './LandingPage/Pages/FaqPage';
 import WithdrawlPage from './LandingPage/Pages/WithdrawlPage';
 import UserDetailPage from './LandingPage/Pages/UserDetailPage';
+import CreateTravelPage from './Dashboard/MainDashboard/db_pages/CreateTravelPage';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           <Route path="/create_event" element={<CreateEventPage />} />
           <Route path="/model_form" element={<ModelDetailForm />} />
           <Route path="/create_club" element={<CreateClubPage />} />
+          <Route path="/create_travel" element={<CreateTravelPage />} />
           <Route path="/event-page" element={<EventPage />} />
           <Route path="/club-page" element={<ClubPage />} />
           <Route path="/travel-page" element={<TravelPage />} />

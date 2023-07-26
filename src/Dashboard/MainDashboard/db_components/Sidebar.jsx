@@ -13,15 +13,15 @@ const Sidebar = () => {
     navigate("/");
   };
 
-  useEffect(() => {
-    const token = cookies["token"];
-    if (token) {
-      const decodedToken = jwtDecode(token);
-      userDetails(decodedToken);
-    } else {
-      navigate("/login");
-    }
-  }, []);
+  // useEffect(() => {
+  //   const token = cookies["token"];
+  //   if (token) {
+  //     const decodedToken = jwtDecode(token);
+  //     userDetails(decodedToken);
+  //   } else {
+  //     navigate("/login");
+  //   }
+  // }, []);
 
   const userDetails = async (token) => {
     console.log(token);
