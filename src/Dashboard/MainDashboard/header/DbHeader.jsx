@@ -27,13 +27,11 @@ const DbHeader = () => {
     <header className="py-8 bg-black-20 sticky top-0 z-[99] xl:static xl:bg-transparent xl:pt-10 xl:py-0">
       <div className="flex flex-wrap justify-between xl:justify-center items-center xl:items-start px-5 xl:px-[10%]">
         <div className="w-1/2 xl:w-1/5 pr-5">
-          <Link to="/home">
-            <img
-              src="images/Hot-Date.png"
-              alt="Logo"
-              className="cursor-pointer"
-            />
-          </Link>
+          <img
+            src="images/Hot-Date.png"
+            alt="Logo"
+            className="cursor-pointer"
+          />
         </div>
         <span
           className="block xl:hidden w-10 cursor-pointer"
@@ -53,7 +51,10 @@ const DbHeader = () => {
             >
               <RxCross1 />
             </span>
-            <Link className="absolute top-[60px] left-5 w-full max-w-[100px] block xl:hidden">
+            <Link
+              to="/home"
+              className="absolute top-[60px] left-5 w-full max-w-[100px] block xl:hidden"
+            >
               <img
                 src="images/Hot-Date.png"
                 alt="Logo"

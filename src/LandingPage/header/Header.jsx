@@ -15,11 +15,11 @@ const Header = ({ Lplayout }) => {
       <div className="container mx-auto">
         <div className="landingpage_header flex flex-wrap items-center justify-between">
           <div className="w-[150px]">
-            <img
+            <Link to="/"><img
               src="landingPage/images/landing-logo.png"
               className="cursor-pointer max-w-100px block"
               alt=""
-            />
+            /></Link>
           </div>
           <div className="flex items-center lg:hidden">
             <button
@@ -38,7 +38,7 @@ const Header = ({ Lplayout }) => {
           >
             <nav className="lg:flex justify-between">
               <div className="flex lg:hidden items-center justify-between gap-5 mb-10 px-4">
-                <Link className="flex items-center">
+                <Link to="/" className="flex items-center">
                   <img
                     src="landingPage/images/landing-logo.png"
                     className="mr-3 logo_image max-w-[100px] xl:max-w-[215px] h-auto"
