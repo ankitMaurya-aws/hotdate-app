@@ -6,7 +6,7 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import { GoogleLogin } from "@react-oauth/google";
 import jwtDecode from "jwt-decode";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import { toast } from "react-toastify";
 const Login = () => {
   const [login, setLogin] = useState({ email: "", password: "" });
@@ -204,7 +204,7 @@ const Login = () => {
                       </label>
                     </div>
                     <p className="text-sm xl:text-lg font-normal leading-29 forgot-password-text bg-gradient-to-r from-orange to-red-500 bg-clip-text cursor-pointer">
-                      Forgot Password?
+                      <Link to="/forgot">Forgot Password?</Link>
                     </p>
                   </div>
                   <button

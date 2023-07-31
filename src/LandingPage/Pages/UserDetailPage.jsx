@@ -1,5 +1,6 @@
 import React from 'react'
 import {MdClose,MdCheck} from 'react-icons/md'
+import { Link } from 'react-router-dom'
 
 const UserDetailPage = () => {
     return (
@@ -41,7 +42,7 @@ const UserDetailPage = () => {
                             <div className='p-5 bg-black-20 rounded-2xl'>
                                 <div className='flex justify-between gap-3 font-normal pb-3 mb-3 border-b border-orange'>
                                     <p className='text-base sm:text-2xl'>Profile</p>
-                                    <p className='cursor-pointer text-xs sm:text-lg'>Edit</p>
+                                    <Link to="/edit-detail" className='cursor-pointer text-xs sm:text-lg'>Edit</Link>
                                 </div>
                                 <p className='text-sm sm:text-lg'>Nothing</p>
                             </div>
