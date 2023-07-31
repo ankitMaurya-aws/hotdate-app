@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
+import { Context } from "../../../Context/context";
 const Sidebar = () => {
-  const [userInfo, setUserInfo] = useState({});
+  const { userInfo, setUserInfo } = useContext(Context);
+  console.log(userInfo);
+  // const [userInfo, setUserInfo] = useState({});
   const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const navigate = useNavigate();
   const handleLogout = () => {
     removeCookie("token");
-    navigate("/");
+    navigate("/login");
   };
 
   // useEffect(() => {
@@ -28,6 +31,8 @@ const Sidebar = () => {
     const { data } = await axios.get(`${BASE_URL}/api/findone/${token.userId}`);
     setUserInfo(data);
   };
+
+  console.log(userInfo);
   return (
     <div className="sidebar xl:w-60">
       <div>
@@ -141,7 +146,7 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className="mb-3">
-            <Link className="inline-flex items-center gap-3">
+            <Link className="inline-flex items-center gap-3" to="/travel-page">
               <span className="block w-6">
                 <img src="images/travel-icon.png" />
               </span>

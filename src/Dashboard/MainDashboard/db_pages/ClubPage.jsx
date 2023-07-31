@@ -1,22 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ClubCard from "../db_components/ClubCard";
 import Pagination from "../db_components/Pagination";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Context } from "../../../Context/context";
 
 const ClubPage = () => {
   const [clubs, setClubs] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(8);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const { searchquery } = useContext(Context);
   const navigate = useNavigate();
   const getClubs = async () => {
-    const { data } = await axios.get(`${BASE_URL}/api/search_club`);
+    const { data } = await axios.get(
+      `${BASE_URL}/api/search_club?q=${searchquery}`
+    );
     setClubs(data);
   };
 
   useEffect(() => {
     getClubs();
-  }, []);
-  console.log(clubs);
+  }, [searchquery]);
+
+  const lastPostIndex = currentPage * recordsPerPage;
+  const firstPostIndex = lastPostIndex - recordsPerPage;
+  const currentPost = clubs.slice(firstPostIndex, lastPostIndex);
   return (
     <div className="bg-black pt-0 sm:pt-8 py-8 px-6 rounded-2xl rounded-r-none min-h-full">
       <div className="sticky top-0 bg-black z-[9] py-5 flex justify-between">
@@ -62,11 +71,16 @@ const ClubPage = () => {
         </div>
       </div>
       <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-        {clubs.map((el, i) => (
+        {currentPost.map((el, i) => (
           <ClubCard key={i} clubs={el} />
         ))}
       </div>
-      <Pagination />
+      <Pagination
+        totalPosts={clubs.length}
+        postsPerPage={recordsPerPage}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
     </div>
   );
 };

@@ -77,7 +77,7 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     setIsSubmit(true);
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
+    if (Object.keys(formErrors).length === 0) {
       try {
         if (!captcha) {
           console.log("fill the captcha");
@@ -267,8 +267,8 @@ const Signup = () => {
                       <input
                         type="password"
                         id="ConfirmPassword"
-                        name="confirmPassword"
-                        value={form.confirmPassword}
+                        name="confirmpassword"
+                        value={form.confirmpassword}
                         onChange={(e) => handleChange(e)}
                         className="bg-black border rounded-md sm:rounded-none sm:border-none sm:border-l-2 sm:rounded-r-md border-orange focus:outline-none focus-visible:none w-full md:w-[calc(100%-120px)] xl:w-[calc(100%-195px)] h-[49px] text-gray font-normal xl:text-lg rounded-r-md text-sm px-2 xl:px-4 py-2.5 text-start placeholder:text-lg placeholder:text-gray items-center flex justify-between"
                         required
@@ -326,16 +326,22 @@ const Signup = () => {
                     <div className="line-1 w-full h-[1px] bg-white"></div>
                   </div>
 
-                  <div className="google_login_btn">
-                    <GoogleLogin
-                      onSuccess={(credentialResponse) => {
-                        googleSignIn(credentialResponse);
-                      }}
-                      onError={() => {
-                        console.log("Login Failed");
-                      }}
-                    />
-                  </div>
+                  {/* <div className="google_login_btn"> */}
+                  <GoogleLogin
+                    onSuccess={(credentialResponse) => {
+                      googleSignIn(credentialResponse);
+                    }}
+                    onError={() => {
+                      console.log("Login Failed");
+                    }}
+                  />
+                  {/* </div> */}
+                  <button
+                    className="gradient cursor-pointer !py-3 w-full !text-lg xl:!text-25px capitalize !font-normal flex justify-center items-center text-white rounded-xl primary_btn"
+                    onClick={() => navigate("/model_form")}
+                  >
+                    Click Here To Register Yourself As a Model
+                  </button>
                 </form>
               </div>
               <div className="sign-up__image relative rounded-b-3xl md:rounded-r-58">

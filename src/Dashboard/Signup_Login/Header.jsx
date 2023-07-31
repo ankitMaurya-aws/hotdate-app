@@ -51,12 +51,16 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link className="block py-2 px-4 text-base lg:text-lg text-black lg:text-white uppercase leading-27 border-bborder-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
+                  <Link
+                    to="/live-chat"
+                    className="block py-2 px-4 text-base lg:text-lg text-black lg:text-white uppercase leading-27 border-bborder-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                  >
                     Live chat
                   </Link>
                 </li>
                 <li>
                   <Link
+                    to="/about"
                     className="block py-2 px-4 text-base lg:text-lg text-black lg:text-white uppercase leading-27 border-b
                                     border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 
                                     lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white
@@ -67,6 +71,7 @@ const Header = () => {
                 </li>
                 <li>
                   <Link
+                    to="/contact"
                     className="block py-2 px-4 text-base lg:text-lg text-black lg:text-white uppercase leading-27 border-b
                              border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0
                               lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white
