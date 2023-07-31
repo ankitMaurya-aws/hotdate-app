@@ -18,7 +18,10 @@ const Pagination = ({
       <div className="flex-1 flex justify-center">
         <Link
           className="primary_btn min-w-[200px] text-center h-16 inline-flex justify-center items-center"
-          onClick={() => setCurrentPage(currentPage + 1)}
+          onClick={() => {
+            setCurrentPage(currentPage + 1);
+            window.scrollTo(0, 0);
+          }}
         >
           Next Page
         </Link>
@@ -30,7 +33,10 @@ const Pagination = ({
             className={`cursor-pointer text-sm w-8 h-8 flex items-center justify-center ${
               currentPage === page ? "border border-white" : ""
             }`}
-            onClick={() => setCurrentPage(page)}
+            onClick={() => {
+              setCurrentPage(page);
+              window.scrollTo(0, 0);
+            }}
           >
             {page}
           </span>

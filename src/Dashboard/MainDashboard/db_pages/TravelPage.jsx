@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TiPlus } from "react-icons/ti";
 import { RiEqualizerLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
@@ -6,6 +6,9 @@ import TravelCard2 from "../db_components/TravelCard2";
 import Pagination from "../db_components/Pagination";
 
 const TravelPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="bg-black py-8 px-6 rounded-2xl xl:rounded-r-none">
       <div className="flex justify-between flex-wrap gap-5 items-center mb-5">

@@ -16,15 +16,15 @@ const Sidebar = () => {
     navigate("/login");
   };
 
-  // useEffect(() => {
-  //   const token = cookies["token"];
-  //   if (token) {
-  //     const decodedToken = jwtDecode(token);
-  //     userDetails(decodedToken);
-  //   } else {
-  //     navigate("/login");
-  //   }
-  // }, []);
+  useEffect(() => {
+    const token = cookies["token"];
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      userDetails(decodedToken);
+    } else {
+      navigate("/login");
+    }
+  }, []);
 
   const userDetails = async (token) => {
     console.log(token);
@@ -79,7 +79,10 @@ const Sidebar = () => {
               </svg>
             </Link>
           </p>
-          <p className="flex items-center justify-between gap-4">
+          <p
+            className="flex items-center justify-between gap-4"
+            onClick={() => navigate("/user-detail")}
+          >
             Edit Profile
             <Link className="cursor-pointer">
               <svg

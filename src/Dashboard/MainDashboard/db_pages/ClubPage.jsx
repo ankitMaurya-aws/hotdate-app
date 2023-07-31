@@ -21,6 +21,7 @@ const ClubPage = () => {
 
   useEffect(() => {
     getClubs();
+    window.scrollTo(0, 0);
   }, [searchquery]);
 
   const lastPostIndex = currentPage * recordsPerPage;
