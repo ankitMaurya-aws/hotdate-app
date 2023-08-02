@@ -23,6 +23,8 @@ import FaqPage from "./LandingPage/Pages/FaqPage";
 import WithdrawlPage from "./LandingPage/Pages/WithdrawlPage";
 import UserDetailPage from "./LandingPage/Pages/UserDetailPage";
 import CreateTravelPage from "./Dashboard/MainDashboard/db_pages/CreateTravelPage";
+import EditUserDetailsPage from "./LandingPage/Pages/EditUserDetailsPage";
+import ForgotPage from "./Dashboard/Signup_Login/ForgotPage";
 
 function App() {
   return (
@@ -38,9 +40,11 @@ function App() {
           <Route path="/faq" element={<FaqPage />} />
           <Route path="/withdraw" element={<WithdrawlPage />} />
           <Route path="/user-detail" element={<UserDetailPage />} />
+          <Route path="/edit-detail" element={<EditUserDetailsPage />} />
         </Route>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/forgot" element={<ForgotPage />} />
         <Route path="/" element={<Layout />}>
           <Route path="/home" element={<HomePage />} />
           <Route path="/create_event" element={<CreateEventPage />} />

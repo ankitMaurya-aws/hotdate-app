@@ -5,7 +5,7 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 const UserDetailPage = () => {
   const { userInfo, setUserInfo } = useContext(Context);
   const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
@@ -84,7 +84,12 @@ const UserDetailPage = () => {
               <div className="p-5 bg-black-20 rounded-2xl">
                 <div className="flex justify-between gap-3 font-normal pb-3 mb-3 border-b border-orange">
                   <p className="text-base sm:text-2xl">Profile</p>
-                  <p className="cursor-pointer text-xs sm:text-lg">Edit</p>
+                  <Link
+                    to="/edit-detail"
+                    className="cursor-pointer text-xs sm:text-lg"
+                  >
+                    Edit
+                  </Link>
                 </div>
                 <p className="text-sm sm:text-lg">Nothing</p>
               </div>
