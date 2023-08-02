@@ -4,14 +4,14 @@ const CreateTravelPage = () => {
     return (
         <div className="bg-white rounded-40px">
             <div className="text-center p-5 py-10 text-black">
-                <h3 className="text-2xl sm:text-4xl mb-2">Create Your Travel</h3>
+                <h3 className="text-2xl sm:text-4xl mb-2">Create Your Travel Page</h3>
                 <p className="text-lg">Let’s Create a Notorious Travel</p>
             </div>
             <div className="flex flex-wrap bg-black rounded-40px ">
                 <div className="w-full md:w-3/5 xl:w-full 2xl:w-3/5 ">
-                <div className="sign-up__form flex flex-col justify-center gap-30 py-6 px-6 lg:py-11 lg:px-14">
+                <div className="sign-up__form flex flex-col justify-center gap-30 py-6 px-6 lg:py-11 lg:px-5 lg:pl-10">
                     <h2 className="text-white text-2xl sm:text-3xl xl:text-5xl text-center xl:text-start font-bold mb-6">
-                        Travel Details
+                    Destination Details
                     </h2>
 
                     <form
@@ -60,16 +60,16 @@ const CreateTravelPage = () => {
                     </div>
                     <div className="flex flex-wrap rounded-md input_field_2">
                         <label
-                        htmlFor="loc_name"
+                        htmlFor="loc_from"
                         className="rounded-l-md w-full md:w-[120px] xl:w-[195px] sm:h-[49px] flex items-center justify-start sm:px-2 lg:px-4 text-sm mb-1 sm:mb-0 md:text-text-xs xl:text-lg text-white  font-normal leading-5 xl:leading-29 text-center 
                                                     lg:text-start"
                         >
-                        Location
+                        Traveling From
                         </label>
                         <input
                         type="text"
-                        id="loc_name"
-                        name="loc_name"
+                        id="loc_from"
+                        name="loc_from"
                         // value={club.club_name}
                         // onChange={handleChange}
                         autoComplete="off"
@@ -79,16 +79,16 @@ const CreateTravelPage = () => {
                     </div>
                     <div className="flex flex-wrap rounded-md input_field_2">
                         <label
-                        htmlFor="time"
+                        htmlFor="loc_to"
                         className="rounded-l-md w-full md:w-[120px] xl:w-[195px] sm:h-[49px] flex items-center justify-start sm:px-2 lg:px-4 text-sm mb-1 sm:mb-0 md:text-text-xs xl:text-lg text-white  font-normal leading-5 xl:leading-29 text-center 
                                                     lg:text-start"
                         >
-                        Time
+                        Traveling To
                         </label>
                         <input
                         type="text"
-                        id="time"
-                        name="time"
+                        id="loc_to"
+                        name="loc_to"
                         // value={club.location}
                         // onChange={handleChange}
                         autoComplete="off"
@@ -141,7 +141,7 @@ const CreateTravelPage = () => {
                         <div className="flex flex-wrap rounded-md input_field">
                         <label
                             htmlFor="interests"
-                            className="rounded-l-md w-full md:w-[120px] xl:w-[195px] md:h-[49px] flex items-center justify-start md:px-2 lg:px-4 text-sm mb-1 md:mb-0 md:text-text-xs xl:text-lg text-orange md:text-white  font-normal leading-5 xl:leading-29 text-center lg:text-start"
+                            className="rounded-l-md w-full md:w-[120px] xl:w-[195px] md:h-[49px] flex items-center justify-start md:px-2 lg:px-4 text-sm mb-1 md:mb-0 md:text-text-xs xl:text-lg text-white  font-normal leading-5 xl:leading-29 text-center lg:text-start"
                         >
                             Interests
                         </label>
@@ -187,11 +187,11 @@ const CreateTravelPage = () => {
                     </form>
                 </div>
                 </div>
-                <div className="md:w-2/5 xl:w-full 2xl:w-2/5">
+                <div className="md:w-2/5 xl:w-full 2xl:w-2/5  md:p-5">
                 <img
                     src="images/lovely-couples.png"
                     alt="Create-travel"
-                    className="block h-full w-full rounded-t-40px md:p-0 p-5 rounded-b-40px md:rounded-b-none md:rounded-br-40px md:rounded-r-40px xl:rounded-b-40px xl:rounded-tl-40px 2xl:rounded-l-none 2xl:rounded-r-40px object-cover object-center aspect-square md:aspect-auto xl:aspect-square 2xl:md:aspect-auto"
+                    className="block h-full w-full rounded-40px md:p-0 p-5 rounded-b-40px  object-cover object-center aspect-square md:aspect-auto xl:aspect-square 2xl:md:aspect-auto"
                 />
                 </div>
             </div>
