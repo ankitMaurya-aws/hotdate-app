@@ -3,6 +3,7 @@ const router = express.Router()
 const modelController = require("../Controller/model")
 const multer = require("multer");
 const path = require("path");
+const {verifyToken,verifyAdmin,verifyUser} = require("../helper/middleware")
 // Define the upload file path
 const uploadFilePath = path.resolve(__dirname, "../", "public/uploads");
 // Set up multer storage configuration
@@ -32,13 +33,17 @@ const fileFilter = (req, file, cb) => {
 };
 
 
-  const upload = multer({ storage: storage, fileFilter: fileFilter });
+const upload = multer({ storage: storage, fileFilter: fileFilter });
 
-router.post("/addModel",upload.fields([{ name: 'images', maxCount: 1000*100*10 }, { name: 'videos', maxCount: 1000*100*10 }]),modelController.addModel)
-router.get("/models",modelController.find)
-router.put("/update_model",upload.fields([{ name: 'images', maxCount: 1000*100*10 }, { name: 'videos', maxCount: 1000*100*10 }]),modelController.update)
-router.delete("/delete_model/:id",modelController.delete)
-module.exports=router
+router.post("/addModel", upload.fields([{ name: 'images', maxCount: 1000 * 100 * 10 }, { name: 'videos', maxCount: 1000 * 100 * 10 }]), modelController.addModel)
+
+router.get("/models", modelController.find)
+
+router.put("/update_wallet",verifyUser,modelController.update_wallet)
+router.put("/booking_model/:modelId",verifyUser,modelController.booking_model)
+router.put("/is_modelverify/:modelId",verifyAdmin,modelController.is_modelverify)
+router.get("/isLive",modelController.isLive)
+module.exports = router
 
 
 

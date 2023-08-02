@@ -10,27 +10,21 @@ module.exports = {
       }
       let images = [];
       let videos = [];
-
-      console.log(req.body);
-      console.log(req.files);
-      // Check if images were uploaded
       if (req.files["images"]) {
         for (const image of req.files["images"]) {
-          images.push(image.filename);
+          images.push(`${process.env.Backend_URL_Image}${image.filename}`);
         }
       }
-
-      // Check if videos were uploaded
       if (req.files["videos"]) {
         for (const video of req.files["videos"]) {
-          videos.push(video.filename);
+          videos.push(`${process.env.Backend_URL_Image}${video.filename}`);
         }
       }
       const data = await eventModel.create({
         ...req.body,
         images: images,
         videos: videos,
-        userId: req.decode._id,
+        create_by: req.user._id,
       });
       if (!data) {
         return res.status(400).send("something went wrong");
@@ -44,30 +38,39 @@ module.exports = {
   },
   async find(req, res) {
     try {
-      const { limit, q, page } = req.query;
-      const data = await eventModel
-        .find()
-        .limit(limit || 7)
-        .skip(page > 0 ? (page - 1) * limit : 0);
+      const { q } = req.query;
+      const data = await eventModel.find();
       const total = await eventModel.count();
       console.log(total, "total");
       if (q) {
-        let result = await eventModel
-          .find({
-            $or: [
-              { firstName: { $regex: q, $options: "i" } },
-              { lastName: { $regex: q, $options: "i" } },
-              { location: { $regex: q, $options: "i" } },
-            ],
-          })
-          .limit(limit || 7)
-          .skip(page > 0 ? (page - 1) * limit : 0);
+        let result = await eventModel.find({
+          $or: [
+            { firstName: { $regex: q, $options: "i" } },
+            { lastName: { $regex: q, $options: "i" } },
+            { location: { $regex: q, $options: "i" } },
+          ],
+        });
         console.log(q, result);
 
         return res.status(200).send({ data: result, total: total });
       }
-
       res.status(200).send({ data, total: total });
+    } catch (e) {
+      console.log(e);
+      return res.status(500).send(e);
+    }
+  },
+  async get_event(req, res) {
+    try {
+      const { id } = req.params;
+      const data = await eventModel
+        .findOne({ _id: id })
+        .populate("create_by", " image username");
+      if (!data) {
+        return res.status(400).send("something went wrong");
+      } else {
+        return res.status(200).send(data);
+      }
     } catch (e) {
       console.log(e);
       return res.status(500).send(e);
@@ -87,8 +90,16 @@ module.exports = {
       if (req.files["images"] && req.files["images"].length > 0) {
         const newImages = req.files["images"].map((image) => image.filename);
         images = [...images, ...newImages];
+        console.log(images);
       }
-
+      let mainImage = null;
+      if (req.files && req.files["mainImage"]) {
+        for (const uploadedImage of req.files["mainImage"]) {
+          mainImage = uploadedImage.filename;
+        }
+      } else {
+        mainImage = exist.mainImage;
+      }
       if (req.body.removeImages && req.body.removeImages.length > 0) {
         const imagesToRemove = req.body.removeImages;
         images = images.filter((image) => !imagesToRemove.includes(image));
@@ -109,6 +120,7 @@ module.exports = {
         {
           ...req.body,
           images: images,
+          mainImage: mainImage,
           videos: videos,
         },
         { new: true }
@@ -144,127 +156,124 @@ module.exports = {
       return res.status(500).send(e);
     }
   },
-  async requestParticipant(req, res) {
-    const { eventId } = req.params;
+  async requestParticipant(req, res, next) {
     try {
+      const { eventId } = req.params;
       const event = await eventModel.findById(eventId);
       if (!event) {
-        return res.status(404).json({ error: "Event not found" });
+        return res.status(404).send("Event not found");
       }
-      const participantIndex = event.participants.findIndex(
-        (p) => p.user.toString() === req.decode._id
-      );
-      if (participantIndex !== -1) {
-        return res.status(400).json({ error: "Participant already added" });
+      if (
+        event.participants.filter((el) => el.user.toString() === req.user._id)
+      ) {
+        return res.status(400).send("Participant already added");
       }
-      event.participants.push({ user: req.decode._id });
+      event.participants.push({ user: req.user._id });
       await event.save();
-
-      res.json({ message: "Participant request sent successfully" });
+      res.status(200).send("Participant request sent successfully");
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "Internal server error" });
+      return next();
     }
   },
-  async updateParticipantStatus(req, res) {
+  async updateParticipantStatus(req, res, next) {
     const { eventId, participantId } = req.params;
     const { status } = req.body;
     try {
       // Find the event by ID
       const event = await eventModel.findById(eventId);
       if (!event) {
-        return res.status(404).json({ error: "Event not found" });
+        return res.status(404).send("Event not found");
       }
       const participant = event.participants.find(
         (p) => p._id.toString() === participantId
       );
       if (!participant) {
-        return res.status(404).json({ error: "Participant not found" });
+        return res.status(404).send("Participant not found");
       }
       participant.status = status;
       await event.save();
-      return res
-        .status(200)
-        .json({ message: "Participant status updated successfully" });
+      return res.status(200).send("Participant status updated successfully");
     } catch (error) {
       console.error(error);
-      return res.status(500).json({ error: "Internal server error" });
+      return next();
     }
   },
-  //   async promote(req, res) {
-  //     try {
-  //       const eventId = req.params.eventId;
-
-  //       // Perform any necessary validation and authorization checks here
-  //       // ...
-
-  //       // Retrieve the event from the database
-  //       const event = await eventModel.findById(eventId);
-  //       if (!event) {
-  //         return res.status(404).json({ error: "Event not found" });
-  //       }
-
-  //       // Check if the event is already promoted
-  //       if (event.isPromoted) {
-  //         return res.status(400).json({ error: "Event is already promoted" });
-  //       }
-
-  //       // Process the payment and update the event document
-  //       // ... (Payment processing logic goes here)
-
-  //       // Update the event as promoted
-  //       event.isPromoted = true;
-  //       await event.save();
-
-  //       // Return a success response
-  //       return res.status(200).json({ message: "Event successfully promoted" });
-  //     } catch (error) {
-  //       console.error(error);
-  //       return res.status(500).json({ error: "Internal server error" });
-  //     }
-  //   }
-
-  // async promote(req, res) {
-  //     try {
-  //         const eventId = req.params.eventId;
-
-  //         // Retrieve the event from the database
-  //         const event = await eventModel.findById(eventId);
-  //         if (!event) {
-  //             return res.status(404).json({ error: "Event not found" });
-  //         }
-  //         // Check if the event is already promoted
-  //         if (event.isPromoted) {
-  //             return res.status(400).json({ error: "Event is already promoted" });
-  //         }
-
-  //         // Process the payment using the Stripe SDK
-  //         const paymentIntent = await stripe.paymentIntents.create({
-  //             amount: 1000, // Amount in cents, adjust according to your pricing
-  //             currency: "usd", // Currency code
-  //             payment_method: req.body.paymentMethodId,
-  //             description: "Event promotion payment for Event XYZ", // Additional payment description
-  //             metadata: {
-  //                 eventId: eventId, // Additional metadata about the event
-  //                 userId: "64ae7a78fd24fceaf4cd831d", // Additional metadata about the user
-  //             },
-  //         });
-
-  //         // Handle the payment response, update the event if successful
-  //         if (paymentIntent.status === "succeeded") {
-  //             // Update the event as promoted
-  //             event.isPromoted = true;
-  //             await event.save();
-  //             if (paymentIntent) {
-  //                 return res.status(200).json({ message: "Event successfully promoted" });
-  //             }
-  //         } else {
-  //             console.error(paymentIntent); // Log the payment error for debugging
-  //             return res.status(500).json({ error: "Payment failed" });
-  //         }
-  //     } catch (error) {
-  //         console.error(error);
-  //         return res.status(500).json({ error: "Internal server error" });
-  //     }
-  // }
 };
+
+//   async promote(req, res) {
+//     try {
+//       const eventId = req.params.eventId;
+
+//       // Perform any necessary validation and authorization checks here
+//       // ...
+
+//       // Retrieve the event from the database
+//       const event = await eventModel.findById(eventId);
+//       if (!event) {
+//         return res.status(404).json({ error: "Event not found" });
+//       }
+
+//       // Check if the event is already promoted
+//       if (event.isPromoted) {
+//         return res.status(400).json({ error: "Event is already promoted" });
+//       }
+
+//       // Process the payment and update the event document
+//       // ... (Payment processing logic goes here)
+
+//       // Update the event as promoted
+//       event.isPromoted = true;
+//       await event.save();
+
+//       // Return a success response
+//       return res.status(200).json({ message: "Event successfully promoted" });
+//     } catch (error) {
+//       console.error(error);
+//       return res.status(500).json({ error: "Internal server error" });
+//     }
+//   }
+
+// async promote(req, res) {
+//     try {
+//         const eventId = req.params.eventId;
+
+//         // Retrieve the event from the database
+//         const event = await eventModel.findById(eventId);
+//         if (!event) {
+//             return res.status(404).json({ error: "Event not found" });
+//         }
+//         // Check if the event is already promoted
+//         if (event.isPromoted) {
+//             return res.status(400).json({ error: "Event is already promoted" });
+//         }
+
+//         // Process the payment using the Stripe SDK
+//         const paymentIntent = await stripe.paymentIntents.create({
+//             amount: 1000, // Amount in cents, adjust according to your pricing
+//             currency: "usd", // Currency code
+//             payment_method: req.body.paymentMethodId,
+//             description: "Event promotion payment for Event XYZ", // Additional payment description
+//             metadata: {
+//                 eventId: eventId, // Additional metadata about the event
+//                 userId: "64ae7a78fd24fceaf4cd831d", // Additional metadata about the user
+//             },
+//         });
+
+//         // Handle the payment response, update the event if successful
+//         if (paymentIntent.status === "succeeded") {
+//             // Update the event as promoted
+//             event.isPromoted = true;
+//             await event.save();
+//             if (paymentIntent) {
+//                 return res.status(200).json({ message: "Event successfully promoted" });
+//             }
+//         } else {
+//             console.error(paymentIntent); // Log the payment error for debugging
+//             return res.status(500).json({ error: "Payment failed" });
+//         }
+//     } catch (error) {
+//         console.error(error);
+//         return res.status(500).json({ error: "Internal server error" });
+//     }
+// }
