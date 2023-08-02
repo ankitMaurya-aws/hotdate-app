@@ -11,6 +11,8 @@ const UserDetailPage = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
   const navigate = useNavigate();
   const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  console.log(userInfo, "jbhjb");
   useEffect(() => {
     if (Object.keys(userInfo).length === 0) {
       const token = cookies["token"];
@@ -106,7 +108,7 @@ const UserDetailPage = () => {
                   <p className="text-sm sm:text-lg grid grid-cols-2 gap-3">
                     <span className="block">Sexual Orientation:</span>
                     <span className="block text-right">
-                      {userInfo.sexual_oriantation}
+                      {userInfo.sexual_orientation}
                     </span>
                   </p>
                   <p className="text-sm sm:text-lg grid grid-cols-2 gap-3">
@@ -119,9 +121,7 @@ const UserDetailPage = () => {
                 <div className="grid gap-y-2">
                   <p className="text-sm sm:text-lg grid grid-cols-2 gap-3">
                     <span className="block">Birthdate:</span>
-                    <span className="block text-right">
-                      {userInfo.birthdate}
-                    </span>
+                    <span className="block text-right">{userInfo.dob}</span>
                   </p>
                   <p className="text-sm sm:text-lg grid grid-cols-2 gap-3">
                     <span className="block">Relocate?:</span>
@@ -132,7 +132,7 @@ const UserDetailPage = () => {
                   <p className="text-sm sm:text-lg grid grid-cols-2 gap-3">
                     <span className="block">Marital Status:</span>
                     <span className="block text-right">
-                      {userInfo.martialStatus}
+                      {userInfo.marital_status}
                     </span>
                   </p>
                   <p className="text-sm sm:text-lg grid grid-cols-2 gap-3">
@@ -147,9 +147,7 @@ const UserDetailPage = () => {
                   </p>
                   <p className="text-sm sm:text-lg grid grid-cols-2 gap-3">
                     <span className="block">Speaks:</span>
-                    <span className="block text-right">
-                      {userInfo.language}
-                    </span>
+                    <span className="block text-right">{userInfo.speaks}</span>
                   </p>
                 </div>
               </div>
@@ -417,7 +415,7 @@ const UserDetailPage = () => {
             alt="award"
             className="max-w-200px md:max-w-full"
           />
-          <h2 className="text-white text-base sm:text-2xl sm:text-3xl xl:text-40px">
+          <h2 className="text-white text-base sm:text-2xl md:text-3xl xl:text-40px">
             #1 Adult Dating Site
           </h2>
         </div>

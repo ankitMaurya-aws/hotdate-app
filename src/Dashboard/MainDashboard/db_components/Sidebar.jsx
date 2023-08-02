@@ -6,7 +6,6 @@ import axios from "axios";
 import { Context } from "../../../Context/context";
 const Sidebar = () => {
   const { userInfo, setUserInfo } = useContext(Context);
-  console.log(userInfo);
   // const [userInfo, setUserInfo] = useState({});
   const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -27,12 +26,10 @@ const Sidebar = () => {
   }, []);
 
   const userDetails = async (token) => {
-    console.log(token);
     const { data } = await axios.get(`${BASE_URL}/api/findone/${token.userId}`);
     setUserInfo(data);
   };
 
-  console.log(userInfo);
   return (
     <div className="sidebar xl:w-60">
       <div>

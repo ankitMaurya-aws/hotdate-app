@@ -21,8 +21,6 @@ const DbHeader = () => {
   const handleChange = (e) => {
     setSearchQuery(e.target.value);
   };
-
-  console.log(searchquery);
   return (
     <header className="py-8 bg-black-20 sticky top-0 z-[99] xl:static xl:bg-transparent xl:pt-10 xl:py-0">
       <div className="flex flex-wrap justify-between xl:justify-center items-center xl:items-start px-5 xl:px-[10%]">

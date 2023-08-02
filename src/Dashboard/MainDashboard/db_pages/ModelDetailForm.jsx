@@ -22,19 +22,19 @@ const ModelDetailForm = () => {
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const [cookies] = useCookies(["cookie-name"]);
 
-  // useEffect(() => {
-  //   const token = cookies["token"];
-  //   if (token) {
-  //     const decodedToken = jwtDecode(token);
-  //     if (decodedToken) {
-  //       setUserToken(token);
-  //     } else {
-  //       navigate("/");
-  //     }
-  //   } else {
-  //     navigate("/login");
-  //   }
-  // }, []);
+  useEffect(() => {
+    const token = cookies["token"];
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      if (decodedToken) {
+        setUserToken(token);
+      } else {
+        navigate("/");
+      }
+    } else {
+      navigate("/login");
+    }
+  }, []);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setModel({ ...model, [name]: value });
@@ -78,7 +78,7 @@ const ModelDetailForm = () => {
         headers,
       });
       if (!data) {
-        toast.error("🦄 Failed to Create Event!", {
+        toast.error("🦄 Failed to Create Model!", {
           position: "top-right",
           autoClose: 2000,
           hideProgressBar: false,
@@ -116,7 +116,6 @@ const ModelDetailForm = () => {
     }
   };
 
-  console.log(model);
   return (
     <div className="bg-white rounded-40px">
       <div className="text-center p-5 py-10 text-black">
