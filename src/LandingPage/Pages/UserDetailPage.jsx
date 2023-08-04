@@ -67,7 +67,15 @@ const UserDetailPage = () => {
                   </p>
                 </div>
                 <p className="text-lg font-light mt-1">
-                  <span>26 F</span> | <span>London</span>
+                  <span>
+                    {userInfo.age}{" "}
+                    {userInfo.gender === "male"
+                      ? "M"
+                      : userInfo.gender === "female"
+                      ? "F"
+                      : "T"}
+                  </span>{" "}
+                  | <span>London</span>
                 </p>
               </div>
               <p className="text-lg font-light">{userInfo.introduction}</p>

@@ -85,6 +85,16 @@ const CreateEventPage = () => {
           theme: "colored",
         });
       } else {
+        toast.success("Event Created Successfully!", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
         setEvent({
           event_name: "",
           Date: "",
@@ -237,6 +247,7 @@ const CreateEventPage = () => {
                     name="event_type"
                     value="Private Place"
                     onChange={handleChange}
+                    checked={event.event_type === "Private Place"}
                   />
                   <label htmlFor="private_place">
                     <span className="radio_circle"></span>
@@ -251,6 +262,7 @@ const CreateEventPage = () => {
                     name="event_type"
                     value="Public Place"
                     onChange={handleChange}
+                    checked={event.event_type === "Public Place"}
                   />
                   <label htmlFor="public_place">
                     <span className="radio_circle"></span>
@@ -265,6 +277,7 @@ const CreateEventPage = () => {
                     name="event_type"
                     value="Virtual Date"
                     onChange={handleChange}
+                    checked={event.event_type === "Virtual Date"}
                   />
                   <label htmlFor="virtual_date">
                     <span className="radio_circle"></span>

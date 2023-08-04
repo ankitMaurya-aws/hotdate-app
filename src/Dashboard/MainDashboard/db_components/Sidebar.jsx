@@ -29,7 +29,7 @@ const Sidebar = () => {
     const { data } = await axios.get(`${BASE_URL}/api/findone/${token.userId}`);
     setUserInfo(data);
   };
-
+  console.log(userInfo);
   return (
     <div className="sidebar xl:w-60">
       <div>

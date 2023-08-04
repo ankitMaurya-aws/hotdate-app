@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { TiPlus } from "react-icons/ti";
 import { RiEqualizerLine } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TravelCard2 from "../db_components/TravelCard2";
 import Pagination from "../db_components/Pagination";
 
 const TravelPage = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -14,7 +15,10 @@ const TravelPage = () => {
       <div className="flex justify-between flex-wrap gap-5 items-center mb-5">
         <h3 className="text-2xl sm:text-5xl leading-none font-bold">Travel</h3>
         <div className="flex gap-2 flex-wrap">
-          <span className="inline-flex rounded-md items-center gap-1 p-2 bg-orange text-sm sm:text-xl font-semibold cursor-pointer">
+          <span
+            className="inline-flex rounded-md items-center gap-1 p-2 bg-orange text-sm sm:text-xl font-semibold cursor-pointer"
+            onClick={() => navigate("/create_travel")}
+          >
             <span className="flex items-center">
               <TiPlus />
             </span>{" "}
