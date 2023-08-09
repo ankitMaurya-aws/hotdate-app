@@ -1,10 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { RxCross1 } from "react-icons/rx";
 import { CgMenuRightAlt } from "react-icons/cg";
+import { useCookies } from "react-cookie";
+import jwtDecode from "jwt-decode";
 
 const Header = ({ Lplayout }) => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
+  const [userToken, setUserToken] = useState("");
+  const location = useLocation();
+  const { pathname } = location;
+
+  useEffect(() => {
+    const token = cookies["token"];
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      if (decodedToken) {
+        setUserToken(decodedToken);
+      }
+    }
+  }, []);
 
   return (
     <header
@@ -15,11 +31,13 @@ const Header = ({ Lplayout }) => {
       <div className="container mx-auto">
         <div className="landingpage_header flex flex-wrap items-center justify-between">
           <div className="w-[150px]">
-            <Link to="/"><img
-              src="landingPage/images/landing-logo.png"
-              className="cursor-pointer max-w-100px block"
-              alt=""
-            /></Link>
+            <Link to="/">
+              <img
+                src="landingPage/images/landing-logo.png"
+                className="cursor-pointer max-w-100px block"
+                alt=""
+              />
+            </Link>
           </div>
           <div className="flex items-center lg:hidden">
             <button
@@ -53,27 +71,74 @@ const Header = ({ Lplayout }) => {
                 </span>
               </div>
               <ul className="lg:w-[calc(100%-150px)] max-w-full block lg:flex justify-center items-center">
-                <li className="uppercase px-5">
+                <li
+                  className={`${
+                    pathname === "/"
+                      ? "text-orange"
+                      : "text-black lg:text-white"
+                  } uppercase px-5`}
+                >
                   <Link to="/">Homepage</Link>
                 </li>
-                <li className="uppercase px-5">
-                  <Link to="/login">login</Link>
-                </li>
-                <li className="uppercase px-5">
+                {userToken ? (
+                  <li
+                    className={`${
+                      pathname === "/login"
+                        ? "text-orange"
+                        : "text-black lg:text-white"
+                    } uppercase px-5`}
+                  >
+                    <Link to="/home">Events</Link>
+                  </li>
+                ) : (
+                  <li
+                    className={`${
+                      pathname === "/login"
+                        ? "text-orange"
+                        : "text-black lg:text-white"
+                    } uppercase px-5`}
+                  >
+                    <Link to="/login">login</Link>
+                  </li>
+                )}
+
+                <li
+                  className={`${
+                    pathname === "/live-chat"
+                      ? "text-orange"
+                      : "text-black lg:text-white"
+                  } uppercase px-5`}
+                >
                   <Link to="/live-chat">Live chat</Link>
                 </li>
-                <li className="uppercase px-5">
+                <li
+                  className={`${
+                    pathname === "/contact"
+                      ? "text-orange"
+                      : "text-black lg:text-white"
+                  } uppercase px-5`}
+                >
                   <Link to="/contact">Contact</Link>
                 </li>
-                <li className="uppercase px-5">
+                <li
+                  className={`${
+                    pathname === "/about"
+                      ? "text-orange"
+                      : "text-black lg:text-white"
+                  } uppercase px-5`}
+                >
                   <Link to="/about">About us</Link>
                 </li>
               </ul>
-              <div className="lg:w-[150px] flex lg:justify-end lg:px-0 px-5 mt-5 lg:mt-0">
-                <Link to="/signup" className="uppercase primary_btn">
-                  Join now
-                </Link>
-              </div>
+              {userToken ? (
+                ""
+              ) : (
+                <div className="lg:w-[150px] flex lg:justify-end lg:px-0 px-5 mt-5 lg:mt-0">
+                  <Link to="/signup" className="uppercase primary_btn">
+                    Join now
+                  </Link>
+                </div>
+              )}
             </nav>
           </div>
         </div>

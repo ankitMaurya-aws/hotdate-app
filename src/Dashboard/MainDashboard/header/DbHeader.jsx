@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
 import { HiChevronDown } from "react-icons/hi2";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./db_header.css";
 import Sidebar from "../db_components/Sidebar";
 import { Context } from "../../../Context/context";
@@ -10,7 +10,8 @@ import { Context } from "../../../Context/context";
 const DbHeader = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [sidebar, setSidebar] = useState(false);
-
+  const location = useLocation();
+  const { pathname } = location;
   const { userInfo, searchquery, setSearchQuery, search, setSearch } =
     useContext(Context);
   const handleSubmit = (e) => {
@@ -75,20 +76,40 @@ const DbHeader = () => {
               </form>
               <div className="db_header_nav w-full">
                 <ul className="xl:flex items-center justify-between mt-10 grid gap-y-2">
-                  <li>
-                    <Link to="/home">Homepage</Link>
+                  <li
+                    className={`${
+                      pathname === "/home" ? "text-orange" : "text-white"
+                    }`}
+                  >
+                    <Link to="/home">Home</Link>
                   </li>
-                  <li>
+                  <li
+                    className={`${
+                      pathname === "/live-chat" ? "text-orange" : "text-white"
+                    }`}
+                  >
                     <Link to="/live-chat">Live Chat</Link>
                   </li>
-                  <li>
+                  <li
+                    className={`${
+                      pathname === "/about" ? "text-orange" : "text-white"
+                    }`}
+                  >
                     <Link to="/about">About</Link>
                   </li>
-                  <li>
+                  <li
+                    className={`${
+                      pathname === "/contact" ? "text-orange" : "text-white"
+                    }`}
+                  >
                     <Link to="/contact">Contact</Link>
                   </li>
-                  <li className="link">
-                    <Link to="/">Join now</Link>
+                  <li
+                    className={`${
+                      pathname === "/" ? "text-orange" : "text-white"
+                    }`}
+                  >
+                    <Link to="/travel-page">Travel</Link>
                   </li>
                 </ul>
               </div>

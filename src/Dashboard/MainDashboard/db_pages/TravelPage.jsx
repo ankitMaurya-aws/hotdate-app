@@ -59,7 +59,7 @@ const TravelPage = () => {
         <TravelCard2 />
         <TravelCard2 />
       </div>
-      <Pagination />
+      {/* <Pagination /> */}
     </div>
   );
 };

@@ -3,6 +3,7 @@ import EventCard from "../db_components/EventCard";
 import Pagination from "../db_components/Pagination";
 import axios from "axios";
 import { Context } from "../../../Context/context";
+import { useNavigate } from "react-router-dom";
 
 const EventPage = () => {
   const [event, setEvent] = useState([]);
@@ -10,12 +11,14 @@ const EventPage = () => {
   const [recordsPerPage] = useState(8);
   const { searchquery } = useContext(Context);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const navigate = useNavigate();
   const getEvent = async () => {
     const { data } = await axios.get(`${BASE_URL}/api/events?q=${searchquery}`);
     console.log(data.data);
     setEvent(data.data);
   };
   useEffect(() => {
+    window.scrollTo(0, 0);
     getEvent();
   }, [searchquery]);
 
@@ -41,6 +44,14 @@ const EventPage = () => {
             </div>
           </div>
           <div className="flex-none grid items-center">
+            <div className="w-5 sm:w-6">
+              <img
+                src="images/add-icon.png"
+                alt="add-icon"
+                className="max-w-full cursor-pointer"
+                onClick={() => navigate("/create_event")}
+              />
+            </div>
             <div className="w-5 sm:w-6">
               <img
                 src="images/filter-icon.png"

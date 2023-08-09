@@ -25,6 +25,8 @@ import UserDetailPage from "./LandingPage/Pages/UserDetailPage";
 import CreateTravelPage from "./Dashboard/MainDashboard/db_pages/CreateTravelPage";
 import EditUserDetailsPage from "./LandingPage/Pages/EditUserDetailsPage";
 import ForgotPage from "./Dashboard/Signup_Login/ForgotPage";
+import ModelPage from "./Dashboard/MainDashboard/db_pages/ModelPage";
+import WishlishtPage from "./Dashboard/MainDashboard/db_pages/WishlishtPage";
 
 function App() {
   return (
@@ -54,8 +56,10 @@ function App() {
           <Route path="/event-page" element={<EventPage />} />
           <Route path="/club-page" element={<ClubPage />} />
           <Route path="/travel-page" element={<TravelPage />} />
+          <Route path="/model-page" element={<ModelPage />} />
           <Route path="/agency-travel-page" element={<AgencyTravelPage />} />
           <Route path="/member-models" element={<MembersModels />} />
+          <Route path="/wishlist" element={<WishlishtPage />} />
         </Route>
       </Routes>
     </>

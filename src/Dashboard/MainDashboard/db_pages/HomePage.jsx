@@ -27,7 +27,6 @@ const HomePage = () => {
 
   const getModels = async () => {
     const { data } = await axios.get(`${BASE_URL}/api/models?q=${searchquery}`);
-
     setModels(data.data);
   };
 

@@ -157,7 +157,7 @@ const CreateEventPage = () => {
                   Date
                 </label>
                 <input
-                  type="date"
+                  type="datetime-local"
                   id="Date"
                   name="Date"
                   onChange={(e) => handleChange(e)}

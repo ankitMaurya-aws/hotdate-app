@@ -22,6 +22,7 @@ const Layout = () => {
       pathname === "/event-page" ||
       pathname === "/club-page" ||
       pathname === "/travel-page" ||
+      pathname === "/model-page" ||
       pathname === "/agency-travel-page" ||
       pathname === "/member-models"
     ) {

@@ -12,20 +12,21 @@ const LiveChatPage = () => {
         />
         <div className="relative max-w-7xl mx-auto pb-5 sm:pb-20 px-5 z-1">
           <h3 className="text-2xl sm:text-4xl font-secondary_font mb-2">
-            Live Member Webcams & Chat
+            Live Member Webcams & Chat on Swinxter Adult Dating Site
           </h3>
           <p className="text-3xl sm:text-5xl font-bold mb-2 max-w-xl">
-            on Kaizen Globe Adult Dating Site
+            Experience the thrill of live member cams & indulge in sizzling live
+            sex chat at Swinxter.com
           </p>
           <p className="text-sm sm:text-lg">
-            Watch live member cams and indulge in hot live sex chat at
-            AdultFriendFinder.com. Our streaming webcams with live chat enable
-            our members to connect live online no matter their location. Cam to
-            cam sessions take online sex dating and cybersex chat to new
-            interactive levels. Whether you are a man, woman, transgender or
-            swinger couple, Adult Friend Finder member cams can connect you with
-            partners eager to share your fantasies. Join the fun with thousands
-            of members online right now!
+            Our streaming webcams with live chat allow our members to connect in
+            real-time, no matter where they are. With cam-to-cam sessions,
+            online sex dating and cybersex chat reach new, interactive levels of
+            excitement. Whether you identify as a man, woman, transgender, or a
+            swinger couple, Swinxter member cams offer a gateway to partners
+            eager to share your wildest fantasies. Join the fun and connect with
+            thousands of members online right now! Embrace the excitement and
+            satisfaction that awaits you at Swinxter.com.
           </p>
         </div>
       </div>
@@ -36,9 +37,14 @@ const LiveChatPage = () => {
               Real Members Broadcasting
             </h3>
             <p className="text-base md:text-lg">
-              In 5 minutes, you can be chatting live via webcam with some of the
-              hottest people in the world. It's happening 24x7 on
-              AdultFriendFinder.com.
+              In just 4 minutes, you can dive into a scintillating live webcam
+              chat with some of the hottest people worldwide. Experience the
+              excitement around the clock, 24/7, at Swinxter.com. Don't miss out
+              on this thrilling opportunity to connect with like-minded
+              individuals and create unforgettable moments in real-time. Join us
+              now and start chatting live with the sexiest people in the world!
+              324,200* active members worldwide | 124,367 new photos this week |
+              14,478* members online now!
               <strong className="block">
                 120,202,200* active members worldwide | 118,691 new photos this
                 week | 34,514* members online now!

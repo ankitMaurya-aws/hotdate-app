@@ -270,7 +270,7 @@ const ModelDetailForm = () => {
                   <span className="w-6 block mr-2">
                     <img src="images/gallery-icon.png" alt="gallery-icon" />
                   </span>
-                  Upload Event Images
+                  Upload Images
                   <input
                     type="file"
                     className="hidden"
@@ -285,7 +285,7 @@ const ModelDetailForm = () => {
                       alt="gallery-icon"
                     />
                   </span>
-                  Upload Event Videos
+                  Upload Videos
                   <input
                     type="file"
                     className="hidden"

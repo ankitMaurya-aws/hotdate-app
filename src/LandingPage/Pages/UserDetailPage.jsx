@@ -73,8 +73,10 @@ const UserDetailPage = () => {
                       ? "M"
                       : userInfo.gender === "female"
                       ? "F"
-                      : "T"}
-                  </span>{" "}
+                      : userInfo.gender === "others"
+                      ? "T"
+                      : ""}
+                  </span>
                   | <span>London</span>
                 </p>
               </div>
@@ -106,7 +108,12 @@ const UserDetailPage = () => {
               <div className="p-5 bg-black-20 rounded-2xl">
                 <div className="flex justify-between gap-3 font-normal pb-3 mb-3 border-b border-orange">
                   <p className="text-base sm:text-2xl">Details</p>
-                  <p className="cursor-pointer text-xs sm:text-lg">Edit</p>
+                  <Link
+                    to="/edit-detail"
+                    className="cursor-pointer text-xs sm:text-lg"
+                  >
+                    Edit
+                  </Link>
                 </div>
                 <div className="grid gap-y-2 pb-3 mb-3 border-b border-orange">
                   <p className="text-sm sm:text-lg grid grid-cols-2 gap-3">

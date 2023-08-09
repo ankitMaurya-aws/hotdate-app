@@ -54,12 +54,31 @@ const EditUserDetailsPage = () => {
     setUserDetails({ ...userDetails, [name]: value });
   };
 
+  const handleImageChange = (e) => {
+    setUserDetails({ ...userDetails, image: e.target.files[0] });
+  };
   const handleSave = async (e) => {
     e.preventDefault();
+    let formData = new FormData();
+
+    formData.append("email", userDetails.email);
+    formData.append("username", userDetails.username);
+    formData.append("sexual_orientation", userDetails.sexual_orientation);
+    formData.append("marital_status", userDetails.marital_status);
+    formData.append("body_type", userDetails.body_type);
+    formData.append("race", userDetails.race);
+    formData.append("speaks", userDetails.speaks);
+    formData.append("dob", userDetails.dob);
+    formData.append("age", userDetails.age);
+    formData.append("looking_for", userDetails.looking_for);
+    formData.append("relocate", userDetails.relocate);
+    formData.append("introduction", userDetails.introduction);
+    formData.append("image", userDetails.image);
+
     try {
       const { data } = await axios.put(
         `${BASE_URL}/api/update_user`,
-        { ...userDetails },
+        formData,
         {
           headers: {
             token: usertoken,
@@ -75,7 +94,7 @@ const EditUserDetailsPage = () => {
       console.log(error);
     }
   };
-
+  console.log(userDetails);
   return (
     <div className="bg-black-20">
       <div className="min-h-[350px] md:min-h-[400px] flex justify-center items-end bg-black rounded-b-50px">
@@ -141,10 +160,12 @@ const EditUserDetailsPage = () => {
                     value={userDetails.sexual_orientation}
                     onChange={handleChange}
                   >
+                    <option value="" disabled>
+                      Select an option
+                    </option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="others">Others</option>
-                    <option value="">Option 4</option>
                   </select>
                 </div>
               </div>
@@ -163,7 +184,10 @@ const EditUserDetailsPage = () => {
                     value={userDetails.gender}
                     onChange={handleChange}
                   >
-                    <option value="">Select gender</option>
+                    <option value="" disabled>
+                      Select an option
+                    </option>
+
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="others">Others</option>
@@ -185,6 +209,10 @@ const EditUserDetailsPage = () => {
                     value={userDetails.marital_status}
                     onChange={handleChange}
                   >
+                    <option value="" disabled>
+                      Select an option
+                    </option>
+
                     <option value="unmarried">Unmarried</option>
                     <option value="married">Married</option>
                   </select>
@@ -297,6 +325,10 @@ const EditUserDetailsPage = () => {
                     value={userDetails.looking_for}
                     onChange={handleChange}
                   >
+                    <option value="" disabled>
+                      Select an option
+                    </option>
+
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="couple">Couple</option>
@@ -318,6 +350,10 @@ const EditUserDetailsPage = () => {
                     value={userDetails.relocate}
                     onChange={handleChange}
                   >
+                    <option value="" disabled>
+                      Select an option
+                    </option>
+
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                   </select>
@@ -349,7 +385,12 @@ const EditUserDetailsPage = () => {
                     <img src="images/gallery-icon.png" alt="gallery-icon" />
                   </span>
                   Edit Profile Image
-                  <input type="file" multiple className="hidden" />
+                  <input
+                    type="file"
+                    multiple
+                    className="hidden"
+                    onChange={handleImageChange}
+                  />
                 </label>
               </div>
             </div>

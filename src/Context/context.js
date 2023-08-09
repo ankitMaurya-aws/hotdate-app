@@ -8,6 +8,7 @@ export const ContextProvider = ({ children }) => {
   const [modelId, setModelId] = useState("");
   const [searchquery, setSearchQuery] = useState("");
   const [search, setSearch] = useState(false);
+  const [refreshModel, setRefreshModel] = useState(false);
   return (
     <Context.Provider
       value={{

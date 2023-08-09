@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Header from "./Header";
+import Header from "../../LandingPage/header/Header";
 import "./signup_login.css";
 import Footer from "./Footer";
 import axios from "axios";
@@ -119,8 +119,9 @@ const Login = () => {
 
   const handleGoogle = useGoogleLogin({
     onSuccess: (credentialResponse) => {
-      setCookie("token", credentialResponse.credential);
-      navigate("/");
+      console.log(credentialResponse);
+      // setCookie("token", credentialResponse.credential);
+      // navigate("/");
     },
     onError: () => {
       toast.error("🦄 Login Failed!", {
@@ -134,16 +135,17 @@ const Login = () => {
         theme: "colored",
       });
     },
-    flow: "auth-code",
+    // flow: "auth-code",
   });
 
   return (
     <div className="min-h-screen bg-black-20 text-white grid content-between">
       <div className="overflow-hidden">
+        {/* <Header /> */}
         <Header />
-        <div className="sign_up__block pt-65px mt-8 sm:mt-16">
+        <div className="sign_up__block pt-65px mt-40">
           <div className="container mx-auto relative z-1">
-            <div className="sign-up__header pt-14 pb-24 bg-white flex flex-col justify-center items-center rounded-t-3xl md:rounded-t-86">
+            <div className="sign-up__header pt-10 pb-20 bg-white flex flex-col justify-center items-center rounded-t-3xl md:rounded-t-86">
               <p className="text-2xl sm:text-3xl xl:text-40px text-black  font-normal">
                 Login
               </p>
@@ -239,7 +241,7 @@ const Login = () => {
                     <div className="text-white px-1">OR</div>
                     <div className="line-1 w-full h-[1px] bg-white"></div>
                   </div>
-                  <button
+                  {/* <button
                     onClick={() => handleGoogle()}
                     className="w-full bg-gray-900 sign-up-google flex justify-center items-center text-white rounded-md text-base sm:text-lg xl:text-25px font-light py-3"
                   >
@@ -249,11 +251,11 @@ const Login = () => {
                       alt="google image"
                       className="ms-3"
                     />
-                  </button>
-                  {/* <GoogleLogin
+                  </button> */}
+                  <GoogleLogin
                     onSuccess={(credentialResponse) => {
                       setCookie("token", credentialResponse.credential);
-                      navigate("/");
+                      navigate("/home");
                     }}
                     onError={() => {
                       toast.error("🦄 Login Failed!", {
@@ -267,7 +269,7 @@ const Login = () => {
                         theme: "colored",
                       });
                     }}
-                  /> */}
+                  />
                 </form>
               </div>
               <div className="sign-up__image relative rounded-b-3xl md:rounded-r-58">

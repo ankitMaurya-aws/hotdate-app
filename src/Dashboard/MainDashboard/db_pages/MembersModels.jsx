@@ -10,6 +10,7 @@ const MembersModels = () => {
   const { modelId } = useContext(Context);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   useEffect(() => {
+    window.scrollTo(0, 0);
     getModel();
   }, []);
 

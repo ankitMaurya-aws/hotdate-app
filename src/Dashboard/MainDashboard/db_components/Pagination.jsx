@@ -12,26 +12,30 @@ const Pagination = ({
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pages.push(i);
   }
-  console.log(pages);
+  console.log(currentPage);
   return (
     <div className="grid gap-y-10 justify-items-center justify-center md:flex items-center md:justify-between my-10 md:my-16">
       <div className="flex-1 flex justify-center">
-        <Link
-          className="primary_btn min-w-[200px] text-center h-16 inline-flex justify-center items-center"
-          onClick={() => {
-            setCurrentPage(currentPage + 1);
-            window.scrollTo(0, 0);
-          }}
-        >
-          Next Page
-        </Link>
+        {Math.ceil(totalPosts / postsPerPage) !== currentPage ? (
+          <Link
+            className="primary_btn min-w-[200px] text-center h-16 inline-flex justify-center items-center"
+            onClick={() => {
+              setCurrentPage(currentPage + 1);
+              window.scrollTo(0, 0);
+            }}
+          >
+            Next Page
+          </Link>
+        ) : (
+          ""
+        )}
       </div>
       <div className="flex items-center">
         {pages.map((page, i) => (
           <span
             key={i}
             className={`cursor-pointer text-sm w-8 h-8 flex items-center justify-center ${
-              currentPage === page ? "border border-white" : ""
+              currentPage === page ? "border border-orange" : ""
             }`}
             onClick={() => {
               setCurrentPage(page);

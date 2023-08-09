@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import Header from "./Header";
+import Header from "../../LandingPage/header/Header";
 import "./signup_login.css";
 import Footer from "./Footer";
 import axios from "axios";
@@ -21,7 +21,7 @@ const Signup = () => {
   const [captcha, setCaptcha] = useState();
   const [isSubmit, setIsSubmit] = useState(false);
   const navigate = useNavigate();
-  const [setCookie] = useCookies(["cookie-name"]);
+  const [cookie, setCookie] = useCookies(["cookie-name"]);
   const Captcha_Key = process.env.REACT_APP_CAPTCHA_KEY;
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const handleChange = (e) => {
@@ -58,6 +58,8 @@ const Signup = () => {
     }
     if (!value.password) {
       errors.password = "password is required";
+    } else if (value.password.length < 8) {
+      errors.password = "Minimum 8 characters password is required";
     }
     if (!value.confirmpassword) {
       errors.confirmpassword = "confirm password is required";
@@ -136,29 +138,33 @@ const Signup = () => {
   const googleSignIn = async (response) => {
     try {
       const decodedToken = jwtDecode(response.credential);
-      const { data } = await axios.post(`${BASE_URL}/api/register`, {
+      const { data } = await axios.post(`${BASE_URL}/api/login`, {
         email: decodedToken.email,
-        username: decodedToken.name,
+        // username: decodedToken.name,
         logintype: "google",
-        token: response.credential,
+        // token: response.credential,
       });
-      if (!data) {
+      console.log(data);
+      if (!response) {
         console.log("failed to create user");
       } else {
-        setCookie("token", response.credential, { maxAge: 60 * 60 * 24 * 7 });
-        toast.success("🦄 Login Successful!", {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
+        console.log(decodedToken);
+        setCookie("token", response.credential);
+        // toast.success("🦄 signin Successful!", {
+        //   position: "top-right",
+        //   autoClose: 2000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        //   theme: "colored",
+        // });
         navigate("/login");
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleGoogle = useGoogleLogin({
@@ -177,15 +183,15 @@ const Signup = () => {
         theme: "colored",
       });
     },
-    flow: "auth-code",
+    // flow: "auth-code",
   });
   return (
     <div className="min-h-screen bg-black-20 text-white grid content-between">
       <div className="overflow-hidden">
         <Header />
-        <div className="sign_up__block pt-65px mt-8 sm:mt-16">
+        <div className="sign_up__block pt-65px mt-40">
           <div className="container mx-auto relative z-1">
-            <div className="sign-up__header pt-14 pb-24 bg-white flex flex-col justify-center items-center rounded-t-3xl md:rounded-t-86">
+            <div className="sign-up__header pt-10 pb-20 bg-white flex flex-col justify-center items-center rounded-t-3xl md:rounded-t-86">
               <p className="text-2xl sm:text-3xl xl:text-40px text-black  font-normal">
                 Sign Up
               </p>
@@ -349,7 +355,7 @@ const Signup = () => {
                     <div className="text-white px-1">OR</div>
                     <div className="line-1 w-full h-[1px] bg-white"></div>
                   </div>
-                  <button
+                  {/* <button
                     onClick={() => handleGoogle()}
                     className="w-full mb-6 bg-gray-900 sign-up-google flex justify-center items-center text-white rounded-md text-base sm:text-lg xl:text-25px font-light py-3"
                   >
@@ -359,21 +365,18 @@ const Signup = () => {
                       alt="google image"
                       className="ms-3"
                     />
-                  </button>
+                  </button> */}
                   {/* <div className="google_login_btn"> */}
-                  {/* <GoogleLogin
+                  <GoogleLogin
                     onSuccess={(credentialResponse) => {
                       googleSignIn(credentialResponse);
                     }}
                     onError={() => {
                       console.log("Login Failed");
                     }}
-                  /> */}
+                  />
                   {/* </div> */}
-                  <button
-                    className="gradient cursor-pointer !py-3 w-full !text-lg xl:!text-25px capitalize !font-normal flex justify-center items-center text-white rounded-xl primary_btn"
-                    onClick={() => navigate("/model_form")}
-                  >
+                  <button className="gradient cursor-pointer !py-3 w-full !text-lg xl:!text-25px capitalize !font-normal flex justify-center items-center text-white rounded-xl primary_btn">
                     Click Here To Register Yourself As a Model
                   </button>
                 </form>

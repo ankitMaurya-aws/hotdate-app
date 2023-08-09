@@ -207,7 +207,7 @@ const CreateClubPage = () => {
                   <span className="w-6 block mr-2">
                     <img src="images/gallery-icon.png" alt="gallery-icon" />
                   </span>
-                  Upload Event Images
+                  Upload Club Images
                   <input
                     type="file"
                     className="hidden"
@@ -222,7 +222,7 @@ const CreateClubPage = () => {
                       alt="gallery-icon"
                     />
                   </span>
-                  Upload Event Videos
+                  Upload Club Videos
                   <input
                     type="file"
                     className="hidden"
